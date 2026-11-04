@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Lesson } from '../types';
-import { X, Download, Printer, CheckCircle, FileText, Sparkles, BookOpen, User, Hash } from 'lucide-react';
+import { X, Download, Printer, CheckCircle, FileText, Sparkles, BookOpen, User, Hash, ExternalLink } from 'lucide-react';
 
 interface PdfViewerModalProps {
   lesson: Lesson | null;
@@ -17,6 +17,16 @@ export const PdfViewerModal: React.FC<PdfViewerModalProps> = ({ lesson, onClose,
   if (!lesson) return null;
 
   const handleDownload = () => {
+    if (lesson.downloadUrl) {
+      window.open(lesson.downloadUrl, '_blank', 'noopener,noreferrer');
+      setDownloadSuccess(true);
+      if (onDownloaded) onDownloaded();
+      setTimeout(() => {
+        setDownloadSuccess(false);
+      }, 4000);
+      return;
+    }
+
     const content = `ใบงานและใบความรู้วิชาเทคโนโลยี ชั้นประถมศึกษาปีที่ 6
 โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์ ศูนย์วิจัยและพัฒนาการศึกษา
 กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี
@@ -88,6 +98,17 @@ ${lesson.scoreWeight ? `[เกณฑ์คะแนน]: ${lesson.scoreWeight}\
           </div>
 
           <div className="flex items-center gap-2">
+            {lesson.downloadUrl && (
+              <a
+                href={lesson.downloadUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3.5 py-2 bg-white text-blue-700 hover:bg-sky-50 rounded-xl text-xs sm:text-sm font-extrabold shadow-md transition active:scale-95"
+              >
+                <ExternalLink className="w-4 h-4" />
+                <span>เปิดใน Google Drive</span>
+              </a>
+            )}
             <button
               onClick={handlePrint}
               className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-white/15 hover:bg-white/25 rounded-xl text-xs font-bold transition"

@@ -257,17 +257,14 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
         </div>
       </section>
 
-      {/* Announcements Board (ประกาศข่าวสารสำคัญ) */}
+      {/* Announcements Board (ประกาศข่าวสาร) */}
       <section className="bg-white rounded-3xl border-2 border-slate-100 shadow-sm p-6 sm:p-8 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div>
             <div className="flex items-center gap-2">
-              <span className="flex h-3 w-3 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-rose-500"></span>
-              </span>
+              <span className="flex h-2.5 w-2.5 rounded-full bg-blue-500"></span>
               <h2 className="text-2xl font-extrabold text-slate-900">
-                ประกาศข่าวสารสำคัญ
+                ประกาศข่าวสาร
               </h2>
             </div>
             <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
@@ -275,76 +272,106 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-1.5 bg-slate-50 p-1.5 rounded-2xl border border-slate-200">
-            {[
-              { id: 'all', label: 'ทั้งหมด' },
-              { id: 'การบ้าน', label: 'การบ้าน 📝' },
-              { id: 'วันสอบ', label: 'วันสอบ ⏰' },
-              { id: 'กิจกรรม', label: 'กิจกรรม 🏆' }
-            ].map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => setActiveAnnouncementFilter(filter.id)}
-                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all ${
-                  activeAnnouncementFilter === filter.id
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white'
-                }`}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
+          {/* Filter Pills - only show when announcements exist */}
+          {ANNOUNCEMENTS.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 bg-slate-50 p-1.5 rounded-2xl border border-slate-200">
+              {[
+                { id: 'all', label: 'ทั้งหมด' },
+                { id: 'การบ้าน', label: 'การบ้าน 📝' },
+                { id: 'วันสอบ', label: 'วันสอบ ⏰' },
+                { id: 'กิจกรรม', label: 'กิจกรรม 🏆' }
+              ].map((filter) => (
+                <button
+                  key={filter.id}
+                  onClick={() => setActiveAnnouncementFilter(filter.id)}
+                  className={`px-3 py-1 rounded-xl text-xs font-bold transition-all ${
+                    activeAnnouncementFilter === filter.id
+                      ? 'bg-blue-600 text-white shadow-sm'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-white'
+                  }`}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Announcement Cards List */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredAnnouncements.map((ann) => (
-            <div
-              key={ann.id}
-              onClick={() => setSelectedAnnouncement(ann)}
-              className={`group relative p-5 rounded-2xl border-2 transition-all cursor-pointer hover:shadow-md flex flex-col justify-between ${
-                ann.isImportant
-                  ? 'bg-gradient-to-br from-amber-50/60 to-orange-50/40 border-amber-300 hover:border-amber-500'
-                  : 'bg-white border-slate-200 hover:border-blue-300'
-              }`}
-            >
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-2">
-                  <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs ${ann.categoryColor}`}>
-                    {ann.category}
-                  </span>
-                  <span className="flex items-center gap-1 text-[11px] text-slate-400 font-medium">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {ann.date}
-                  </span>
+        {filteredAnnouncements.length === 0 ? (
+          <div className="py-10 px-6 sm:px-10 bg-gradient-to-b from-sky-50/60 via-white to-slate-50/70 rounded-3xl border-2 border-dashed border-sky-200 text-center space-y-3.5 shadow-2xs">
+            <div className="w-16 h-16 mx-auto rounded-3xl bg-sky-100 text-sky-600 flex items-center justify-center text-3xl shadow-sm border border-sky-200">
+              📬
+            </div>
+            <div className="space-y-1">
+              <h3 className="text-base sm:text-lg font-black text-slate-800">
+                ยังไม่มีประกาศข่าวสารใหม่ในขณะนี้
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-500 max-w-lg mx-auto leading-relaxed">
+                อาจารย์ยังไม่มีประกาศเพิ่มเติมสำหรับช่วงเวลานี้ครับ ขอให้นักเรียนทุกคนตั้งใจเรียนรู้และมีความสุขกับการเรียน หากมีกำหนดการส่งงาน การสอบ หรือกิจกรรมพิเศษ อาจารย์จะนำมาอัปเดตแจ้งให้ทราบที่นี่ครับ
+              </p>
+            </div>
+            <div className="pt-2 flex flex-wrap items-center justify-center gap-2">
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-sky-100/80 text-sky-800 rounded-full text-xs font-bold border border-sky-200/60">
+                ✨ นักเรียนสามารถติดตามภารกิจประจำสัปดาห์ได้จากป้ายด้านบนครับ
+              </span>
+              <button
+                onClick={() => onNavigate('lessons')}
+                className="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-bold rounded-full shadow-xs transition flex items-center gap-1.5"
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>ดูบทเรียนสัปดาห์นี้</span>
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {filteredAnnouncements.map((ann) => (
+              <div
+                key={ann.id}
+                onClick={() => setSelectedAnnouncement(ann)}
+                className={`group relative p-5 rounded-2xl border-2 transition-all cursor-pointer hover:shadow-md flex flex-col justify-between ${
+                  ann.isImportant
+                    ? 'bg-gradient-to-br from-amber-50/60 to-orange-50/40 border-amber-300 hover:border-amber-500'
+                    : 'bg-white border-slate-200 hover:border-blue-300'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow-xs ${ann.categoryColor}`}>
+                      {ann.category}
+                    </span>
+                    <span className="flex items-center gap-1 text-[11px] text-slate-400 font-medium">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {ann.date}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition line-clamp-2">
+                    {ann.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">
+                    {ann.summary}
+                  </p>
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-blue-600 transition line-clamp-2">
-                  {ann.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 mt-2 line-clamp-2 leading-relaxed">
-                  {ann.summary}
-                </p>
-              </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                {ann.dueDate ? (
-                  <span className="text-rose-600 font-bold flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" /> กำหนด: {ann.dueDate}
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+                  {ann.dueDate ? (
+                    <span className="text-rose-600 font-bold flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5" /> กำหนด: {ann.dueDate}
+                    </span>
+                  ) : (
+                    <span className="text-slate-400">คลิกเพื่ออ่านรายละเอียด</span>
+                  )}
+                  <span className="text-blue-600 font-bold group-hover:underline flex items-center gap-1">
+                    อ่านต่อ <ChevronRight className="w-3.5 h-3.5" />
                   </span>
-                ) : (
-                  <span className="text-slate-400">คลิกเพื่ออ่านรายละเอียด</span>
-                )}
-                <span className="text-blue-600 font-bold group-hover:underline flex items-center gap-1">
-                  อ่านต่อ <ChevronRight className="w-3.5 h-3.5" />
-                </span>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Daily Computing Tip & Riddle (เกร็ดความรู้ลับประจำวัน) */}

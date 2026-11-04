@@ -36,6 +36,7 @@ export interface Lesson {
   difficulty: 'ง่าย' | 'ปานกลาง' | 'ท้าทาย';
   homeworkDue?: string;
   scoreWeight?: string;
+  downloadUrl?: string;
 }
 
 export interface GameItem {

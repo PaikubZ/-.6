@@ -10,7 +10,8 @@ import {
   Sparkles,
   Calendar,
   CheckCircle2,
-  Award
+  Award,
+  ExternalLink
 } from 'lucide-react';
 
 interface LessonsSectionProps {
@@ -281,28 +282,56 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
 
                   {/* Right: PDF Action Button */}
                   <div className="lg:col-span-4 flex">
-                    <button
-                      onClick={() => onOpenPdf(lesson)}
-                      className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white rounded-2xl shadow-md transition-all active:scale-98"
-                    >
-                      <div className="flex items-center gap-3 text-left">
-                        <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
-                          <FileText className="w-6 h-6 text-amber-300" />
+                    {lesson.downloadUrl ? (
+                      <a
+                        href={lesson.downloadUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-98"
+                      >
+                        <div className="flex items-center gap-3 text-left">
+                          <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+                            <FileText className="w-6 h-6 text-amber-300" />
+                          </div>
+                          <div>
+                            <div className="text-xs font-bold text-amber-200 flex items-center gap-1.5">
+                              <span>ดาวน์โหลดใบงาน (Google Drive)</span>
+                              <ExternalLink className="w-3.5 h-3.5 text-amber-200" />
+                            </div>
+                            <div className="text-xs font-medium text-white/90 truncate max-w-[160px] sm:max-w-[200px]">
+                              {lesson.pdfTitle}
+                            </div>
+                            <div className="text-[10px] text-sky-100">
+                              คลิกเพื่อเปิดและดาวน์โหลดไฟล์บน Google Drive
+                            </div>
+                          </div>
                         </div>
-                        <div>
-                          <div className="text-xs font-bold text-amber-200">
-                            ดาวน์โหลดใบงาน/เอกสาร
+                        <ExternalLink className="w-5 h-5 text-white/80 group-hover:text-white group-hover:scale-110 transition shrink-0 ml-2" />
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => onOpenPdf(lesson)}
+                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white rounded-2xl shadow-md transition-all active:scale-98"
+                      >
+                        <div className="flex items-center gap-3 text-left">
+                          <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+                            <FileText className="w-6 h-6 text-amber-300" />
                           </div>
-                          <div className="text-xs font-medium text-white/90 truncate max-w-[160px] sm:max-w-[200px]">
-                            {lesson.pdfTitle}
-                          </div>
-                          <div className="text-[10px] text-sky-100">
-                            PDF • {lesson.pdfPages} หน้า ({lesson.pdfSize})
+                          <div>
+                            <div className="text-xs font-bold text-amber-200">
+                              ดาวน์โหลดใบงาน/เอกสาร
+                            </div>
+                            <div className="text-xs font-medium text-white/90 truncate max-w-[160px] sm:max-w-[200px]">
+                              {lesson.pdfTitle}
+                            </div>
+                            <div className="text-[10px] text-sky-100">
+                              PDF • {lesson.pdfPages} หน้า ({lesson.pdfSize})
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <Download className="w-5 h-5 text-white/80 group-hover:text-white group-hover:scale-110 transition shrink-0 ml-2" />
-                    </button>
+                        <Download className="w-5 h-5 text-white/80 group-hover:text-white group-hover:scale-110 transition shrink-0 ml-2" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>

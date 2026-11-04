@@ -1,57 +1,6 @@
 import { Announcement, Lesson, GameItem, StudentWork, TeacherItem } from '../types';
 
-export const ANNOUNCEMENTS: Announcement[] = [
-  {
-    id: 'ann-1',
-    title: 'ส่งการบ้านโครงงาน Scratch "เกมเก็บแต้มหรรษา" สัปดาห์นี้!',
-    date: '3 พ.ย. 2026',
-    category: 'การบ้าน',
-    categoryColor: 'bg-amber-500 text-white',
-    summary: 'ให้นักเรียน ป.6 ทุกคน ส่งลิงก์โปรเจกต์ Scratch หรืออัปโหลดไฟล์ .sb3 ในระบบก่อน 17.00 น.',
-    content: 'สวัสดีเด็กๆ ป.6 ที่น่ารักทุกคน อย่าลืมตรวจสอบตัวแปรคะแนน (Score) และการวนซ้ำ (Forever loop) ให้ถูกต้องตามเกณฑ์ที่อาจารย์สอนไปในคาบสัปดาห์ที่ 4 นะครับ ส่งก่อนกำหนดรับเหรียญความตรงต่อเวลาพิเศษ 5 เหรียญ!',
-    dueDate: 'ศุกร์ที่ 7 พ.ย. 2569 เวลา 17.00 น.',
-    isImportant: true,
-    actionText: 'ดูตัวอย่างบทเรียน',
-    actionTab: 'lessons'
-  },
-  {
-    id: 'ann-2',
-    title: 'นัดหมายสอบวัดความรู้กลางภาค วิทยาการคำนวณ ป.6',
-    date: '1 พ.ย. 2026',
-    category: 'วันสอบ',
-    categoryColor: 'bg-rose-500 text-white',
-    summary: 'สอบข้อเขียนเชิงตรรกะและสอบปฏิบัติหน้าคอมพิวเตอร์ สัปดาห์ที่ 10 ในคาบเรียนปกติ',
-    content: 'เนื้อหาที่ออกสอบได้แก่: หน่วยที่ 1 การให้เหตุผลเชิงตรรกะและสัญลักษณ์ผังงาน (Flowchart) และหน่วยที่ 2 การแก้โจทย์ด้วยบล็อกคำสั่ง Scratch นักเรียนสามารถทบทวนได้จากใบงานและวิดีโอในหน้าบทเรียนได้เลยครับ',
-    dueDate: '20 พ.ย. 2569 ในคาบเรียน',
-    isImportant: true,
-    actionText: 'อ่านทบทวนบทเรียน',
-    actionTab: 'lessons'
-  },
-  {
-    id: 'ann-3',
-    title: 'เปิดรับสมัครทีมแข่งขันทักษะการเขียนโปรแกรม "Young Coder 2026"',
-    date: '28 ต.ค. 2026',
-    category: 'กิจกรรม',
-    categoryColor: 'bg-emerald-500 text-white',
-    summary: 'ตัวแทนนักเรียนชั้น ป.6 ไปแข่งขันระดับเขตพื้นที่การศึกษา ทีมละ 2 คน สนใจสมัครกับอาจารย์ผู้สอน',
-    content: 'โอกาสดีสำหรับน้องๆ ป.6 ที่ชื่นชอบการแก้ปัญหาด้วยโปรแกรมมิ่ง สมัครพร้อมเพื่อนคู่หู 2 คน เพื่อรับการฝึกฝนติวเข้มและเป็นตัวแทนโรงเรียน มีเกียรติบัตรและของรางวัลเพียบ!',
-    isImportant: false,
-    actionText: 'ติดต่อครูผู้สอน',
-    actionTab: 'contact'
-  },
-  {
-    id: 'ann-4',
-    title: 'อัปเดตบทเรียนใหม่: สัปดาห์ที่ 5 "ค้นหาข้อมูลขั้นเทพด้วย Google"',
-    date: '25 ต.ค. 2026',
-    category: 'บทเรียนใหม่',
-    categoryColor: 'bg-blue-500 text-white',
-    summary: 'เรียนรู้วิธีใส่เครื่องหมายคำพูด ค้นหาเฉพาะไฟล์ PDF และตัดคำที่ไม่ต้องการออก',
-    content: 'ใบงานและคลิปสอนอัปเดตเรียบร้อยแล้ว เด็กๆ สามารถคลิกเข้าไปศึกษาล่วงหน้าได้เลย มีทริคเด็ดๆ ที่จะทำให้การค้นหาทำรายงานกลายเป็นเรื่องง่ายนิดเดียว!',
-    isImportant: false,
-    actionText: 'ไปที่บทเรียนที่ 5',
-    actionTab: 'lessons'
-  }
-];
+export const ANNOUNCEMENTS: Announcement[] = [];
 
 export const LESSONS: Lesson[] = [
   // ================= ภาคปลาย (Semester 2) =================
@@ -87,7 +36,8 @@ export const LESSONS: Lesson[] = [
     ],
     difficulty: 'ปานกลาง',
     scoreWeight: 'เก็บคะแนนสะสม 5 คะแนน',
-    homeworkDue: 'ส่งใบงานปฏิบัติในคาบเรียน'
+    homeworkDue: 'ส่งใบงานปฏิบัติในคาบเรียน',
+    downloadUrl: 'https://drive.google.com/file/d/1Yn33BZRXxXhmg-Be5W52TBNRxcKU6WhI/view?usp=sharing'
   },
 
   // ================= ภาคต้น (Semester 1) =================
@@ -626,7 +576,7 @@ export const TEACHERS_LIST: TeacherItem[] = [
     name: 'อาจารย์อนงค์นาฏ',
     shortName: 'อ.อนงค์นาฏ',
     role: 'อาจารย์ผู้สอน',
-    subject: 'สอนคอมพิวเตอร์ / เทคโนโลยี ป.6',
+    subject: 'สอนเทคโนโลยี ป.6',
     imageUrl: '/assets/aistudio/technologygrade6_1afae94b.png',
     room: 'ห้องปฏิบัติการคอมพิวเตอร์',
     facebookTag: '#เทคโนโลยีป6 #สอนคอมพิวเตอร์ #ครูอนงค์นาฏ'
