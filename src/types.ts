@@ -18,6 +18,8 @@ export interface Announcement {
 
 export interface Lesson {
   id: string;
+  semester: 1 | 2; // 1 = ภาคต้น, 2 = ภาคปลาย
+  termLabel?: string;
   week: number;
   dateRange: string;
   unitNumber: number;

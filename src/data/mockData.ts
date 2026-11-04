@@ -54,8 +54,47 @@ export const ANNOUNCEMENTS: Announcement[] = [
 ];
 
 export const LESSONS: Lesson[] = [
+  // ================= ภาคปลาย (Semester 2) =================
   {
-    id: 'lesson-1',
+    id: 'lesson-term2-1',
+    semester: 2,
+    termLabel: 'ภาคปลาย',
+    week: 1,
+    dateRange: '3 - 6 พ.ย. 69',
+    unitNumber: 1,
+    unitName: 'การแก้ปัญหาอย่างเป็นระบบ & ผังงาน (Flowchart)',
+    title: 'การแก้ปัญหาอย่างเป็นระบบ & การเขียนรหัสลำลองและผังงาน (Flowchart)',
+    subtitle: 'ขั้นตอนการแก้ปัญหา 4 ขั้นตอน แนวคิดการทำงานเชิงตรรกะ พร้อมฝึกเขียนรหัสลำลอง (Pseudocode) และการใช้สัญลักษณ์ผังงาน (Flowchart)',
+    description: 'เรียนรู้ขั้นตอนการแก้ปัญหาอย่างเป็นระบบ 4 ขั้นตอน แนวคิดการทำงานเชิงตรรกะ พร้อมฝึกเขียนรหัสลำลอง (Pseudocode) และการใช้สัญลักษณ์ผังงาน (Flowchart)',
+    tasks: [
+      'ชมสื่อวิดีโอการเรียนรู้: เรื่อง "วิทยาการคำนวณ EP4 ความสำคัญของปัญหา (ลิปดา&โพล่า)" และ "สื่อการเรียนการสอน เรื่อง ผังงาน (Flowchart)"',
+      'เรียนรู้ขั้นตอนการแก้ปัญหาอย่างเป็นระบบ: ศึกษากระบวนการแก้ปัญหา 4 ขั้นตอน และแนวคิดการทำงานเชิงตรรกะ (ลำดับขั้นตอน, มีเงื่อนไข, วนซ้ำ)',
+      'ศึกษาการเขียนรหัสลำลองและผังงาน: การใช้คำบรรยายอธิบายขั้นตอน (Pseudocode) และการใช้สัญลักษณ์รูปภาพเขียนผังงาน (Flowchart) ตามหลักการและโครงสร้าง 3 รูปแบบ',
+      'ทำใบงานปฏิบัติ: เรื่อง "การแก้ปัญหาอย่างเป็นระบบ" เพื่อวัดความเข้าใจ'
+    ],
+    keyPoints: [
+      'กระบวนการแก้ปัญหา 4 ขั้นตอน: ได้แก่ 1. วิเคราะห์ปัญหา 2. วางแผนการแก้ไขปัญหา 3. ดำเนินการแก้ปัญหา และ 4. ตรวจสอบและปรับปรุง',
+      'แนวคิดการทำงาน 3 รูปแบบ: ได้แก่ แนวคิดแบบเป็นลำดับขั้นตอน, แนวคิดแบบมีเงื่อนไข และแนวคิดแบบวนซ้ำ',
+      'การถ่ายทอดความคิดในการแก้ปัญหา: การเขียนรหัสลำลอง (Pseudocode) ด้วยข้อความ และการเขียนผังงาน (Flowchart) ด้วยสัญลักษณ์มาตรฐาน (Terminator, Process, Decision, Flow line, Connector) ตามโครงสร้างแบบเรียงลำดับ แบบทางเลือก และแบบทำซ้ำ'
+    ],
+    pdfTitle: 'ใบงานปฏิบัติที่ 1: การแก้ปัญหาอย่างเป็นระบบและผังงาน Flowchart.pdf',
+    pdfPages: 4,
+    pdfSize: '2.5 MB',
+    learningObjectives: [
+      'อธิบายกระบวนการแก้ปัญหา 4 ขั้นตอนได้อย่างถูกต้อง',
+      'อธิบายแนวคิดการทำงานเชิงตรรกะ 3 รูปแบบ (ลำดับขั้นตอน, มีเงื่อนไข, วนซ้ำ) ได้',
+      'เขียนรหัสลำลองและผังงาน (Flowchart) ด้วยสัญลักษณ์มาตรฐานได้'
+    ],
+    difficulty: 'ปานกลาง',
+    scoreWeight: 'เก็บคะแนนสะสม 5 คะแนน',
+    homeworkDue: 'ส่งใบงานปฏิบัติในคาบเรียน'
+  },
+
+  // ================= ภาคต้น (Semester 1) =================
+  {
+    id: 'lesson-term1-1',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 1,
     dateRange: '4 - 10 มิ.ย. 69',
     unitNumber: 1,
@@ -83,7 +122,9 @@ export const LESSONS: Lesson[] = [
     difficulty: 'ง่าย'
   },
   {
-    id: 'lesson-2',
+    id: 'lesson-term1-2',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 2,
     dateRange: '11 - 17 มิ.ย. 69',
     unitNumber: 1,
@@ -114,7 +155,9 @@ export const LESSONS: Lesson[] = [
     homeworkDue: 'สอบเก็บคะแนนทักษะในคาบเรียน'
   },
   {
-    id: 'lesson-3',
+    id: 'lesson-term1-3',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 3,
     dateRange: '19 - 25 มิ.ย. 69',
     unitNumber: 2,
@@ -144,7 +187,9 @@ export const LESSONS: Lesson[] = [
     homeworkDue: 'อ่านเอกสารทบทวนสอบสัปดาห์หน้า'
   },
   {
-    id: 'lesson-4',
+    id: 'lesson-term1-4',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 4,
     dateRange: '26 มิ.ย. - 2 ก.ค. 69',
     unitNumber: 2,
@@ -174,7 +219,9 @@ export const LESSONS: Lesson[] = [
     homeworkDue: 'ส่งงานวิดีโอและสอบวัดความรู้ในคาบเรียน'
   },
   {
-    id: 'lesson-5',
+    id: 'lesson-term1-5',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 5,
     dateRange: '9 - 15 ก.ค. 69',
     unitNumber: 3,
@@ -203,7 +250,9 @@ export const LESSONS: Lesson[] = [
     homeworkDue: 'ส่งงานอินโฟกราฟิกพฤกษศาสตร์โรงเรียน (ถั่ว)'
   },
   {
-    id: 'lesson-6',
+    id: 'lesson-term1-6',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 6,
     dateRange: '16 - 23 ก.ค. 69',
     unitNumber: 4,
@@ -232,7 +281,9 @@ export const LESSONS: Lesson[] = [
     homeworkDue: 'ส่งโปสเตอร์โฆษณาผลิตภัณฑ์ถั่ว'
   },
   {
-    id: 'lesson-7',
+    id: 'lesson-term1-7',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 7,
     dateRange: '24 - 31 ก.ค. 69',
     unitNumber: 5,
@@ -261,7 +312,9 @@ export const LESSONS: Lesson[] = [
     homeworkDue: 'ตรวจสอบและส่งงานค้างก่อนสอบ'
   },
   {
-    id: 'lesson-8',
+    id: 'lesson-term1-8',
+    semester: 1,
+    termLabel: 'ภาคต้น',
     week: 8,
     dateRange: '3 - 7 ส.ค. 69',
     unitNumber: 5,

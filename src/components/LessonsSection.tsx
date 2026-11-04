@@ -18,11 +18,17 @@ interface LessonsSectionProps {
 }
 
 export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => {
+  const [selectedSemester, setSelectedSemester] = useState<1 | 2>(2);
   const [selectedUnit, setSelectedUnit] = useState<number | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const units = [
-    { number: 'all', title: 'ทั้งหมด (สัปดาห์ 1-8)' },
+  const unitsTerm2 = [
+    { number: 'all', title: 'ทั้งหมด (ภาคปลาย)' },
+    { number: 1, title: 'หน่วยที่ 1: การแก้ปัญหาอย่างเป็นระบบ & ผังงาน' }
+  ];
+
+  const unitsTerm1 = [
+    { number: 'all', title: 'ทั้งหมด (ภาคต้น สัปดาห์ 1-8)' },
     { number: 1, title: 'หน่วยที่ 1: การค้นหาข้อมูล & AI Search' },
     { number: 2, title: 'หน่วยที่ 2: วิดีโอ & การเขียน Prompt' },
     { number: 3, title: 'หน่วยที่ 3: อินโฟกราฟิก & NotebookLM' },
@@ -30,7 +36,14 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
     { number: 5, title: 'หน่วยที่ 5: ทบทวน & สอบกลางภาค' }
   ];
 
+  const currentUnits = selectedSemester === 2 ? unitsTerm2 : unitsTerm1;
+
   const filteredLessons = LESSONS.filter((lesson) => {
+    // Semester filter
+    if (lesson.semester !== selectedSemester) {
+      return false;
+    }
+
     // Unit filter
     if (selectedUnit !== 'all' && lesson.unitNumber !== selectedUnit) {
       return false;
@@ -58,13 +71,13 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
         <div>
           <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-amber-200 mb-2">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>หลักสูตรรายวิชาเทคโนโลยี ภาคต้น</span>
+            <span>หลักสูตรรายวิชาเทคโนโลยี (แยกภาคต้น - ภาคปลาย)</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
             คลังบทเรียนและเนื้อหากิจกรรมประจำสัปดาห์
           </h1>
           <p className="text-sky-100 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
-            ติดตามหัวข้อการเรียนรู้ในแต่ละสัปดาห์ การใช้งาน AI Search, Prompting, การสร้างสรรค์วิดีโอ, Canva, NotebookLM และเอกสารทบทวนสอบกลางภาค
+            เลือกดูเนื้อหาตามภาคเรียน ติดตามหัวข้อการเรียนรู้ในแต่ละสัปดาห์ พร้อมเอกสารและใบงานประกอบการเรียน
           </p>
         </div>
 
@@ -74,7 +87,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
             <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="ค้นหาบทเรียน เช่น 'AI Search', 'Canva', 'NotebookLM', 'Prompt', 'พฤกษศาสตร์'..."
+              placeholder="ค้นหาบทเรียน เช่น 'แก้ปัญหา', 'ผังงาน', 'Flowchart', 'Pseudocode', 'Canva'..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500 bg-slate-50 focus:bg-white transition"
@@ -83,9 +96,47 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
         </div>
       </div>
 
+      {/* Semester Switcher Tabs */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-3.5 rounded-3xl border-2 border-slate-200 shadow-sm">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-bold text-slate-500 uppercase tracking-wider px-2 shrink-0">
+            ภาคเรียน:
+          </span>
+          <div className="inline-flex p-1 bg-slate-100 rounded-2xl border border-slate-200 w-full sm:w-auto">
+            <button
+              onClick={() => { setSelectedSemester(2); setSelectedUnit('all'); }}
+              className={`flex-1 sm:flex-initial px-5 py-2 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-2 ${
+                selectedSemester === 2
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-slate-600 hover:text-blue-600'
+              }`}
+            >
+              <span>🌸 ภาคปลาย (ปี 2569)</span>
+              <span className="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full">
+                กำลังเรียน
+              </span>
+            </button>
+            <button
+              onClick={() => { setSelectedSemester(1); setSelectedUnit('all'); }}
+              className={`flex-1 sm:flex-initial px-5 py-2 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-2 ${
+                selectedSemester === 1
+                  ? 'bg-blue-600 text-white shadow-md'
+                  : 'text-slate-600 hover:text-blue-600'
+              }`}
+            >
+              <span>🌱 ภาคต้น (คลังย้อนหลัง)</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="text-xs font-bold text-slate-500 px-2 sm:px-0">
+          แสดงบทเรียน <span className="text-blue-600 font-extrabold">{selectedSemester === 2 ? 'ภาคปลาย' : 'ภาคต้น'}</span> ({filteredLessons.length} รายการ)
+        </div>
+      </div>
+
       {/* Unit Filter Tabs */}
       <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-        {units.map((u) => (
+        {currentUnits.map((u) => (
           <button
             key={u.number}
             onClick={() => setSelectedUnit(u.number as any)}
@@ -135,8 +186,10 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
                 <div className="p-5 sm:p-7 border-b border-slate-100 space-y-3">
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className="bg-blue-600 text-white font-black text-xs sm:text-sm px-3.5 py-1.5 rounded-xl shadow-xs">
-                        สัปดาห์ที่ {lesson.week}
+                      <span className={`font-black text-xs sm:text-sm px-3.5 py-1.5 rounded-xl shadow-xs ${
+                        lesson.semester === 2 ? 'bg-indigo-600 text-white' : 'bg-slate-700 text-white'
+                      }`}>
+                        {lesson.termLabel || (lesson.semester === 2 ? 'ภาคปลาย' : 'ภาคต้น')} • สัปดาห์ที่ {lesson.week}
                       </span>
                       <span className="bg-amber-100 text-amber-900 font-bold text-xs px-3 py-1 rounded-xl border border-amber-300 flex items-center gap-1.5">
                         <Calendar className="w-3.5 h-3.5 text-amber-700" />

@@ -63,7 +63,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
 
   return (
     <div className="space-y-10 sm:space-y-12 pb-16">
-      {/* Hero Banner - กิจกรรมประจำสัปดาห์ ภาคต้น */}
+      {/* Hero Banner - กิจกรรมประจำสัปดาห์ ภาคปลาย */}
       <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-sky-600 to-amber-500 text-white shadow-xl p-6 sm:p-10 lg:p-12">
         {/* Decorative background shapes */}
         <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -74,15 +74,15 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
           <div className="lg:col-span-8 space-y-4 text-left">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/30 text-xs sm:text-sm font-bold text-amber-200">
               <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>กิจกรรมประจำสัปดาห์ ภาคต้น</span>
+              <span>กิจกรรมประจำสัปดาห์ ภาคปลาย</span>
             </div>
 
             <div>
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white drop-shadow-sm">
-                กิจกรรมประจำสัปดาห์ ภาคต้น
+                กิจกรรมประจำสัปดาห์ ภาคปลาย
               </h1>
               <div className="inline-block mt-2 px-3.5 py-1 bg-amber-400 text-amber-950 font-bold rounded-xl text-sm sm:text-base shadow-sm">
-                📅 สัปดาห์ที่ 8 (3 - 7 สิงหาคม 2569)
+                📅 สัปดาห์ที่ 1 (3 - 6 พฤศจิกายน 2569)
               </div>
             </div>
 
@@ -93,7 +93,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   1
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  อ่านเอกสารทบทวนก่อนสอบกลางภาค เรื่องการออกแบบอินโฟกราฟิกและการใช้งานเว็บไซต์ Canva
+                  ดูสื่อวิดีโอการเรียนรู้ เรื่อง "ความสำคัญของปัญหา (ลิปดา&amp;โพล่า)" และเรื่อง "ผังงาน (Flowchart)"
                 </p>
               </div>
 
@@ -102,7 +102,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   2
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  สอบทฤษฎี เรื่องการออกแบบอินโฟกราฟิกและการใช้งานเว็บไซต์ Canva แบบเลือกตอบ 4 ตัวเลือก จำนวน 10 ข้อ 10 คะแนน
+                  ศึกษาบทเรียนขั้นตอนการแก้ปัญหาอย่างเป็นระบบ 4 ขั้นตอน (วิเคราะห์ปัญหา &gt; วางแผน &gt; ดำเนินการ &gt; ตรวจสอบ) และแนวคิดเชิงตรรกะ (ลำดับขั้นตอน, มีเงื่อนไข, วนซ้ำ)
                 </p>
               </div>
 
@@ -111,7 +111,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   3
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  สอบปฏิบัติด้วยเว็บไซต์ Canva 10 คะแนน
+                  ทำใบงาน เรื่อง "การแก้ปัญหาอย่างเป็นระบบ" (เก็บคะแนนสะสม 5 คะแนน)
                 </p>
               </div>
 
@@ -120,28 +120,20 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   4
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  ติดตามงานค้าง
+                  สรุปความรู้การเขียนรหัสลำลอง (Pseudocode) และการใช้สัญลักษณ์ผังงาน (Flowchart)
                 </p>
               </div>
             </div>
 
-            {/* Quick Action buttons */}
+            {/* Quick Action button */}
             <div className="flex flex-wrap gap-3 pt-2">
               <button
                 onClick={() => onNavigate('lessons')}
                 className="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 active:scale-95 text-amber-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2"
               >
                 <BookOpen className="w-4 h-4" />
-                <span>ดูเอกสารทบทวน & บทเรียน</span>
+                <span>ดูบทเรียน &amp; ใบงานสัปดาห์ที่ 1</span>
                 <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-
-              <button
-                onClick={() => onNavigate('gallery')}
-                className="px-5 py-2.5 bg-white/20 hover:bg-white/30 active:scale-95 text-white font-extrabold text-xs sm:text-sm rounded-xl backdrop-blur-md border border-white/30 shadow-sm transition-all flex items-center gap-2"
-              >
-                <Palette className="w-4 h-4 text-amber-300" />
-                <span>ชมตัวอย่างอินโฟกราฟิก</span>
               </button>
             </div>
           </div>
@@ -151,16 +143,16 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
             <div className="relative w-full max-w-xs">
               <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-6 border-2 border-white/30 shadow-2xl animate-float text-center">
                 <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-amber-400 to-orange-400 flex items-center justify-center text-4xl shadow-lg mb-3">
-                  🎨
+                  🧩
                 </div>
                 <div className="inline-block bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full mb-2 uppercase tracking-wider">
-                  สัปดาห์สอบกลางภาค
+                  สัปดาห์ที่ 1 ภาคปลาย
                 </div>
                 <h3 className="text-lg font-bold text-white mb-1">
-                  "เตรียมตัวให้พร้อมนะคนเก่ง!"
+                  "ยินดีต้อนรับสู่ภาคปลาย!"
                 </h3>
                 <p className="text-xs text-sky-100">
-                  ทบทวน Canva และส่งงานครบ ได้คะแนนเต็มแน่นอน 🌟
+                  ฝึกคิดเป็นระบบและเขียนผังงาน Flowchart สนุกๆ ไปด้วยกันนะคนเก่ง 🌟
                 </p>
               </div>
             </div>

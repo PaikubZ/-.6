@@ -17,10 +17,9 @@ export const PdfViewerModal: React.FC<PdfViewerModalProps> = ({ lesson, onClose,
   if (!lesson) return null;
 
   const handleDownload = () => {
-    // Trigger download simulation and actual file download
-    const content = `ใบงานและใบความรู้วิชา เทคโนโลยี ชั้นประถมศึกษาปีที่ 6
+    const content = `ใบงานและใบความรู้วิชาเทคโนโลยี ชั้นประถมศึกษาปีที่ 6
 โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์ ศูนย์วิจัยและพัฒนาการศึกษา
-ครูผู้สอน: นายสมชาย พัฒนกิจ
+กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี
 ==================================================
 สัปดาห์ที่ ${lesson.week} (${lesson.dateRange}): ${lesson.title}
 ${lesson.subtitle}
