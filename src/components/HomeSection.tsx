@@ -132,7 +132,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                 className="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 active:scale-95 text-amber-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2"
               >
                 <BookOpen className="w-4 h-4" />
-                <span>ดูบทเรียน &amp; ใบงานสัปดาห์ที่ 1</span>
+                <span>ดูบทเรียนสัปดาห์ที่ 1</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>

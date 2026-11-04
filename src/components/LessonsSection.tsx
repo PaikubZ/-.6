@@ -294,14 +294,11 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
                             <FileText className="w-6 h-6 text-amber-300" />
                           </div>
                           <div>
-                            <div className="text-xs font-bold text-amber-200 flex items-center gap-1.5">
-                              <span>ดาวน์โหลดใบงาน (Google Drive)</span>
+                            <div className="text-sm font-bold text-amber-200 flex items-center gap-1.5">
+                              <span>ดาวน์โหลดบทเรียนสัปดาห์ที่ {lesson.week}</span>
                               <ExternalLink className="w-3.5 h-3.5 text-amber-200" />
                             </div>
-                            <div className="text-xs font-medium text-white/90 truncate max-w-[160px] sm:max-w-[200px]">
-                              {lesson.pdfTitle}
-                            </div>
-                            <div className="text-[10px] text-sky-100">
+                            <div className="text-[11px] text-sky-100">
                               คลิกเพื่อเปิดและดาวน์โหลดไฟล์บน Google Drive
                             </div>
                           </div>
@@ -311,21 +308,19 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
                     ) : (
                       <button
                         onClick={() => onOpenPdf(lesson)}
-                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white rounded-2xl shadow-md transition-all active:scale-98"
+                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-98"
                       >
                         <div className="flex items-center gap-3 text-left">
                           <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
                             <FileText className="w-6 h-6 text-amber-300" />
                           </div>
                           <div>
-                            <div className="text-xs font-bold text-amber-200">
-                              ดาวน์โหลดใบงาน/เอกสาร
+                            <div className="text-sm font-bold text-amber-200 flex items-center gap-1.5">
+                              <span>ดาวน์โหลดบทเรียนสัปดาห์ที่ {lesson.week}</span>
+                              <Download className="w-3.5 h-3.5 text-amber-200" />
                             </div>
-                            <div className="text-xs font-medium text-white/90 truncate max-w-[160px] sm:max-w-[200px]">
-                              {lesson.pdfTitle}
-                            </div>
-                            <div className="text-[10px] text-sky-100">
-                              PDF • {lesson.pdfPages} หน้า ({lesson.pdfSize})
+                            <div className="text-[11px] text-sky-100">
+                              คลิกเพื่อเปิดและดาวน์โหลดเอกสาร PDF
                             </div>
                           </div>
                         </div>
