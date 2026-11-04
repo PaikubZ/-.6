@@ -1,0 +1,8 @@
+{
+  "name": "Remix เทคโนโลยี ป.6 (วิทยาการคำนวณ)",
+  "description": "เว็บไซต์ประจำรายวิชาเทคโนโลยี (วิทยาการคำนวณ) ชั้นประถมศึกษาปีที่ 6 สดใส ทันสมัย เข้าถึงง่ายสำหรับนักเรียน",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
