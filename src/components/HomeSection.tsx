@@ -141,11 +141,15 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
           {/* Hero Right Cheerful Mascot */}
           <div className="lg:col-span-4 flex justify-center">
             <div className="relative w-full max-w-xs">
-              <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-6 border-2 border-white/30 shadow-2xl animate-float text-center">
-                <div className="w-24 h-24 mx-auto rounded-3xl bg-gradient-to-tr from-amber-400 to-orange-400 flex items-center justify-center text-4xl shadow-lg mb-3">
-                  🧩
+              <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-5 border-2 border-white/30 shadow-2xl animate-float text-center flex flex-col items-center">
+                <div className="w-32 h-32 mx-auto drop-shadow-xl mb-2 flex items-center justify-center">
+                  <img
+                    src="/assets/aistudio/20_bf556e21.png"
+                    alt="การ์ตูนนักเรียนสวัสดี"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
-                <div className="inline-block bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full mb-2 uppercase tracking-wider">
+                <div className="inline-block bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full mb-2 uppercase tracking-wider shadow-sm">
                   สัปดาห์ที่ 1 ภาคปลาย
                 </div>
                 <h3 className="text-lg font-bold text-white mb-1">

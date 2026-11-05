@@ -42,6 +42,12 @@ export const getAwardBadge = (rank: AwardRank | string): string => {
   return '🥉 รางวัลรองชนะเลิศอันดับ 2';
 };
 
+export const getStudentAvatar = (name: string): string => {
+  return name.startsWith('เด็กหญิง')
+    ? '/assets/aistudio/2_ad589254.png'
+    : '/assets/aistudio/1_016fadcb.png';
+};
+
 export const GallerySection: React.FC = () => {
   const [works, setWorks] = useState<StudentWork[]>(STUDENT_WORKS);
   const [activeClassFilter, setActiveClassFilter] = useState<string>('all');
@@ -269,52 +275,72 @@ export const GallerySection: React.FC = () => {
         <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-purple-500/10 blur-3xl pointer-events-none" />
         <div className="absolute right-1/3 -bottom-20 w-72 h-72 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 bg-amber-400 text-amber-950 px-3 py-1 rounded-full text-xs font-black shadow-sm">
-              <Trophy className="w-3.5 h-3.5" />
-              <span>ประกาศรางวัลผลงานยอดเยี่ยม</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-3 py-1 rounded-full text-xs font-bold">
-              <Leaf className="w-3.5 h-3.5" />
-              <span>งานสวนพฤกษศาสตร์โรงเรียน สาธิตเกษตรฯ</span>
-            </span>
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="space-y-4 max-w-3xl">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 bg-amber-400 text-amber-950 px-3 py-1 rounded-full text-xs font-black shadow-sm">
+                <Trophy className="w-3.5 h-3.5" />
+                <span>ประกาศรางวัลผลงานยอดเยี่ยม</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 px-3 py-1 rounded-full text-xs font-bold">
+                <Leaf className="w-3.5 h-3.5" />
+                <span>งานสวนพฤกษศาสตร์โรงเรียน</span>
+              </span>
+            </div>
+
+            <div>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                ประกาศรางวัลและโชว์ผลงานนักเรียน ชั้น ป.6
+              </h1>
+              <p className="mt-2 text-sm sm:text-base text-purple-200 font-medium max-w-4xl leading-relaxed">
+                โครงการประกวดการสร้างสื่ออินโฟกราฟิก หัวข้อ{' '}
+                <span className="text-amber-300 font-bold">
+                  "พันธุ์ไม้งานสวนพฤกษศาสตร์โรงเรียน: เมล็ดพันธุ์แห่งคุณค่า ๗ พฤกษาถั่วนานาพรรณ"
+                </span>{' '}
+                ด้วยเว็บไซต์ Canva วิชาเทคโนโลยี (วิทยาการคำนวณ) ประจำปีการศึกษา 2569
+              </p>
+            </div>
+
+            {/* Quick Metrics Bar */}
+            <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
+                <div className="text-xs text-purple-200">ผลงานทั้งหมด</div>
+                <div className="text-xl font-black text-amber-300">21 รางวัล</div>
+                <div className="text-[11px] text-purple-300">ห้อง ป.6/1 - ป.6/7</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
+                <div className="text-xs text-purple-200">🥇 ชนะเลิศอันดับ 1</div>
+                <div className="text-xl font-black text-yellow-300">7 รางวัล</div>
+                <div className="text-[11px] text-purple-300">อันดับ 1 ของแต่ละห้อง</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
+                <div className="text-xs text-purple-200">🥈 รองชนะเลิศอันดับ 1</div>
+                <div className="text-xl font-black text-slate-200">7 รางวัล</div>
+                <div className="text-[11px] text-purple-300">ผลงานคะแนนยอดเยี่ยม</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
+                <div className="text-xs text-purple-200">🥉 รองชนะเลิศอันดับ 2</div>
+                <div className="text-xl font-black text-amber-400">7 รางวัล</div>
+                <div className="text-[11px] text-purple-300">ผลงานคะแนนดีเด่น</div>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
-              ประกาศรางวัลและโชว์ผลงานนักเรียน ชั้น ป.6
-            </h1>
-            <p className="mt-2 text-sm sm:text-base text-purple-200 font-medium max-w-4xl leading-relaxed">
-              โครงการประกวดการสร้างสื่ออินโฟกราฟิก หัวข้อ{' '}
-              <span className="text-amber-300 font-bold">
-                "พันธุ์ไม้งานสวนพฤกษศาสตร์โรงเรียน: เมล็ดพันธุ์แห่งคุณค่า ๗ พฤกษาถั่วนานาพรรณ"
-              </span>{' '}
-              ด้วยเว็บไซต์ Canva วิชาเทคโนโลยี (วิทยาการคำนวณ) ประจำปีการศึกษา 2569
-            </p>
-          </div>
-
-          {/* Quick Metrics Bar */}
-          <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
-              <div className="text-xs text-purple-200">ผลงานทั้งหมด</div>
-              <div className="text-xl font-black text-amber-300">21 รางวัล</div>
-              <div className="text-[11px] text-purple-300">จาก 7 ห้องเรียน (ป.6/1 - ป.6/7)</div>
+          {/* Cute Student Cartoon Characters Decoration */}
+          <div className="hidden lg:flex items-end gap-2 shrink-0 self-end -mb-6 sm:-mb-10 mr-2 select-none pointer-events-none">
+            <div className="relative transition-transform duration-300 hover:scale-105">
+              <img
+                src="/assets/aistudio/24_feafe487.png"
+                alt="การ์ตูนนักเรียนทำคอมพิวเตอร์"
+                className="w-36 h-36 xl:w-44 xl:h-44 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]"
+              />
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
-              <div className="text-xs text-purple-200">🥇 ชนะเลิศ</div>
-              <div className="text-xl font-black text-yellow-300">7 รางวัล</div>
-              <div className="text-[11px] text-purple-300">อันดับ 1 ของแต่ละห้อง</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
-              <div className="text-xs text-purple-200">🥈 รองอันดับ 1</div>
-              <div className="text-xl font-black text-slate-200">7 รางวัล</div>
-              <div className="text-[11px] text-purple-300">ผลงานคะแนนยอดเยี่ยม</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 border border-white/15">
-              <div className="text-xs text-purple-200">🥉 รองอันดับ 2</div>
-              <div className="text-xl font-black text-amber-400">7 รางวัล</div>
-              <div className="text-[11px] text-purple-300">ผลงานคะแนนดีเด่น</div>
+            <div className="relative -ml-6 transition-transform duration-300 hover:scale-105">
+              <img
+                src="/assets/aistudio/20_bf556e21.png"
+                alt="การ์ตูนนักเรียนสวัสดี"
+                className="w-36 h-36 xl:w-44 xl:h-44 object-contain drop-shadow-[0_12px_24px_rgba(0,0,0,0.4)]"
+              />
             </div>
           </div>
         </div>
@@ -492,15 +518,19 @@ export const GallerySection: React.FC = () => {
                   <div className="p-4 space-y-3">
                     {/* Student Identity */}
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center font-black text-xs">
-                          {work.studentClass.replace('ป.', '')}
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-indigo-50 border border-indigo-200/80 overflow-hidden shrink-0 shadow-2xs">
+                          <img
+                            src={getStudentAvatar(work.studentName)}
+                            alt={work.studentName}
+                            className="w-full h-full object-cover object-top"
+                          />
                         </div>
                         <div>
                           <h4 className="font-bold text-slate-900 text-xs sm:text-sm">
                             {work.studentName}
                           </h4>
-                          <div className="text-[11px] text-slate-500">
+                          <div className="text-[11px] text-slate-500 font-medium">
                             ห้อง {work.studentClass}
                           </div>
                         </div>
@@ -565,9 +595,16 @@ export const GallerySection: React.FC = () => {
           >
             {/* Top Control Bar */}
             <div className="bg-slate-950/90 border-b border-white/10 px-4 py-3 sm:px-6 flex items-center justify-between text-white shrink-0">
-              {/* Left: Medal, Student Name & Nav Indicator */}
-              <div className="flex items-center gap-3 min-w-0">
+              {/* Left: Medal, Cartoon Avatar, Student Name & Nav Indicator */}
+              <div className="flex items-center gap-2.5 min-w-0">
                 <span className="text-xl sm:text-2xl">{currentModalWork.awardBadge.split(' ')[0]}</span>
+                <div className="w-8 h-8 rounded-lg overflow-hidden bg-white/10 shrink-0 border border-amber-400/40 hidden sm:block">
+                  <img
+                    src={getStudentAvatar(currentModalWork.studentName)}
+                    alt={currentModalWork.studentName}
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-xs bg-amber-400 text-amber-950 font-black px-2 py-0.5 rounded-md">
@@ -707,18 +744,25 @@ export const GallerySection: React.FC = () => {
                 {/* Sidebar Content */}
                 <div className="p-4 sm:p-5 flex-1 overflow-y-auto space-y-4 text-xs">
                   {/* Award Badge Box */}
-                  <div className="bg-gradient-to-r from-amber-500/20 via-yellow-500/15 to-transparent border border-amber-400/40 rounded-2xl p-3.5 space-y-1">
+                  <div className="bg-gradient-to-r from-amber-500/20 via-yellow-500/15 to-transparent border border-amber-400/40 rounded-2xl p-3.5 space-y-1.5">
                     <div className="flex items-center justify-between">
                       <span className="text-amber-300 font-black text-sm flex items-center gap-1.5">
                         <Trophy className="w-4 h-4 text-amber-400" />
                         <span>{getAwardTitle(currentModalWork.awardRank)}</span>
                       </span>
                     </div>
-                    <div className="text-white font-bold text-sm">
-                      {currentModalWork.studentName}
+                    <div className="text-white font-bold text-sm flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-lg overflow-hidden bg-slate-950/60 border border-amber-400/30 shrink-0 shadow-xs">
+                        <img
+                          src={getStudentAvatar(currentModalWork.studentName)}
+                          alt={currentModalWork.studentName}
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                      <span className="truncate">{currentModalWork.studentName}</span>
                     </div>
-                    <div className="text-slate-400 text-[11px]">
-                      ห้อง {currentModalWork.studentClass} • โรงเรียนสาธิตแห่ง มก.
+                    <div className="text-slate-300 text-[11px] font-medium">
+                      ห้อง {currentModalWork.studentClass}
                     </div>
                   </div>
 
@@ -774,6 +818,20 @@ export const GallerySection: React.FC = () => {
                           </button>
                         );
                       })}
+                    </div>
+
+                    {/* Cute cartoon mascot tip */}
+                    <div className="flex items-center gap-2 pt-2 border-t border-white/10 mt-1">
+                      <div className="w-7 h-7 rounded-full overflow-hidden bg-white/10 shrink-0 border border-amber-400/40 p-0.5">
+                        <img
+                          src="/assets/aistudio/1_016fadcb.png"
+                          alt="การ์ตูนนักเรียนส่งกำลังใจ"
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                      <span className="text-[10px] text-amber-200/90 font-medium">
+                        คลิก Emoji ส่งกำลังใจให้เพื่อนๆ ป.6 กันนะ! ✨
+                      </span>
                     </div>
                   </div>
 
