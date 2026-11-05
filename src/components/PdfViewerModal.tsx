@@ -17,8 +17,29 @@ export const PdfViewerModal: React.FC<PdfViewerModalProps> = ({ lesson, onClose,
   if (!lesson) return null;
 
   const handleDownload = () => {
+    if (lesson.pdfUrl) {
+      const a = document.createElement('a');
+      a.href = lesson.pdfUrl;
+      a.download = lesson.pdfTitle || 'worksheet.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setDownloadSuccess(true);
+      if (onDownloaded) onDownloaded();
+      setTimeout(() => {
+        setDownloadSuccess(false);
+      }, 4000);
+      return;
+    }
+
     if (lesson.downloadUrl) {
-      window.open(lesson.downloadUrl, '_blank', 'noopener,noreferrer');
+      const a = document.createElement('a');
+      a.href = lesson.downloadUrl;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
       setDownloadSuccess(true);
       if (onDownloaded) onDownloaded();
       setTimeout(() => {

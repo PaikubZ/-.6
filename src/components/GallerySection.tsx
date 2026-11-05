@@ -9,7 +9,6 @@ import {
   Sparkles,
   Trophy,
   Search,
-  MessageCircle,
   ZoomIn,
   ZoomOut,
   RotateCcw,
@@ -22,6 +21,27 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
+const EMOJI_OPTIONS = [
+  { emoji: '❤️', label: 'ชอบมาก', defaultCount: 18 },
+  { emoji: '👏', label: 'ปรบมือ', defaultCount: 15 },
+  { emoji: '🌟', label: 'ยอดเยี่ยม', defaultCount: 22 },
+  { emoji: '🔥', label: 'สุดยอด', defaultCount: 14 },
+  { emoji: '💡', label: 'ไอเดียเจ๋ง', defaultCount: 12 },
+  { emoji: '🎉', label: 'ยินดีด้วย', defaultCount: 25 },
+];
+
+export const getAwardTitle = (rank: AwardRank | string): string => {
+  if (rank === 'winner') return 'รางวัลชนะเลิศอันดับ 1';
+  if (rank === 'runner1') return 'รางวัลรองชนะเลิศอันดับ 1';
+  return 'รางวัลรองชนะเลิศอันดับ 2';
+};
+
+export const getAwardBadge = (rank: AwardRank | string): string => {
+  if (rank === 'winner') return '🥇 รางวัลชนะเลิศอันดับ 1';
+  if (rank === 'runner1') return '🥈 รางวัลรองชนะเลิศอันดับ 1';
+  return '🥉 รางวัลรองชนะเลิศอันดับ 2';
+};
+
 export const GallerySection: React.FC = () => {
   const [works, setWorks] = useState<StudentWork[]>(STUDENT_WORKS);
   const [activeClassFilter, setActiveClassFilter] = useState<string>('all');
@@ -31,22 +51,38 @@ export const GallerySection: React.FC = () => {
   // Lightbox Modal state
   const [modalIndex, setModalIndex] = useState<number | null>(null);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
-  const [activeInfoTab, setActiveInfoTab] = useState<'details' | 'comments'>('details');
-  const [cheerMessage, setCheerMessage] = useState<string>('');
-  const [cheersList, setCheersList] = useState<{ [workId: string]: { name: string; text: string; time: string }[] }>({
-    'work-6-1-winner': [
-      { name: 'เพื่อน ป.6/1', text: 'ออกแบบสวยงามมาก ลำดับเนื้อหาอ่านง่ายสุดๆ เลยพุฒิ!', time: '1 วันที่แล้ว' },
-      { name: 'คุณครูวัชระ', text: 'ชื่นชมการใช้คู่สีพฤกษศาสตร์ และการจัดองค์ประกอบภาพครับ', time: '2 วันที่แล้ว' }
-    ],
-    'work-6-2-winner': [
-      { name: 'เพื่อนห้อง 2', text: 'วาดภาพประกอบและอินโฟกราฟิกถั่วลิสงได้ละเอียดน่าทานมากจ้า', time: '1 วันที่แล้ว' }
-    ],
-    'work-6-3-winner': [
-      { name: 'กลุ่มรักพฤกษา', text: 'ข้อมูลเมล็ดถั่วพูครบถ้วนมาก นำไปทำรายงานต่อได้เลย!', time: '2 วันที่แล้ว' }
-    ]
-  });
+  const [emojiReactions, setEmojiReactions] = useState<{
+    [workId: string]: { [emoji: string]: number };
+  }>({});
+  const [recentEmojiKey, setRecentEmojiKey] = useState<string | null>(null);
 
   const imageContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleEmojiClick = (workId: string, emoji: string) => {
+    confetti({
+      particleCount: 28,
+      spread: 60,
+      origin: { y: 0.65 },
+      colors: ['#F59E0B', '#10B981', '#6366F1', '#EC4899', '#3B82F6']
+    });
+
+    setRecentEmojiKey(`${workId}-${emoji}`);
+    setTimeout(() => setRecentEmojiKey(null), 500);
+
+    setEmojiReactions((prev) => {
+      const workData = prev[workId] || {};
+      const defaultOption = EMOJI_OPTIONS.find((o) => o.emoji === emoji);
+      const currentCount =
+        workData[emoji] !== undefined ? workData[emoji] : (defaultOption?.defaultCount ?? 10);
+      return {
+        ...prev,
+        [workId]: {
+          ...workData,
+          [emoji]: currentCount + 1
+        }
+      };
+    });
+  };
 
   // Filtered works list
   const filteredWorks = works.filter((w) => {
@@ -96,20 +132,6 @@ export const GallerySection: React.FC = () => {
     );
   };
 
-  // Add classmate cheer comment
-  const handleAddCheer = (workId: string) => {
-    if (!cheerMessage.trim()) return;
-    const newCheer = {
-      name: 'เพื่อน ป.6 ร่วมให้กำลังใจ',
-      text: cheerMessage.trim(),
-      time: 'เมื่อสักครู่'
-    };
-    setCheersList((prev) => ({
-      ...prev,
-      [workId]: [newCheer, ...(prev[workId] || [])]
-    }));
-    setCheerMessage('');
-  };
 
   // Open modal at given index
   const openModal = (work: StudentWork) => {
@@ -234,9 +256,9 @@ export const GallerySection: React.FC = () => {
 
   const rankFilterList = [
     { id: 'all', label: 'ทุกอันดับรางวัล', icon: Trophy },
-    { id: 'winner', label: '🥇 ชนะเลิศ (7 รางวัล)', icon: Trophy },
-    { id: 'runner1', label: '🥈 รองอันดับ 1 (7 รางวัล)', icon: Trophy },
-    { id: 'runner2', label: '🥉 รองอันดับ 2 (7 รางวัล)', icon: Trophy }
+    { id: 'winner', label: '🥇 รางวัลชนะเลิศอันดับ 1 (7 รางวัล)', icon: Trophy },
+    { id: 'runner1', label: '🥈 รางวัลรองชนะเลิศอันดับ 1 (7 รางวัล)', icon: Trophy },
+    { id: 'runner2', label: '🥉 รางวัลรองชนะเลิศอันดับ 2 (7 รางวัล)', icon: Trophy }
   ];
 
   return (
@@ -416,7 +438,7 @@ export const GallerySection: React.FC = () => {
                   <div className="p-4 pb-3 flex items-center justify-between border-b border-slate-100 bg-slate-50/70">
                     <div className="flex items-center gap-2">
                       <span className={`px-2.5 py-1 rounded-xl text-xs font-black ${rankStyle.badgeBg}`}>
-                        {work.awardBadge}
+                        {getAwardBadge(work.awardRank)}
                       </span>
                       <span className="text-xs font-bold text-slate-700 bg-white border border-slate-200 px-2 py-0.5 rounded-lg shadow-2xs">
                         {work.studentClass}
@@ -436,9 +458,6 @@ export const GallerySection: React.FC = () => {
                       loading="lazy"
                     />
 
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
-
                     {/* Botanical Topic Badge */}
                     {work.botanicalTopic && (
                       <div className="absolute top-3 left-3">
@@ -455,13 +474,6 @@ export const GallerySection: React.FC = () => {
                         <Eye className="w-4 h-4 text-indigo-600" />
                         <span>คลิกเพื่อดูรูปภาพเต็มจอ</span>
                       </div>
-                    </div>
-
-                    {/* Title on Image */}
-                    <div className="absolute bottom-3 inset-x-3 text-white">
-                      <h3 className="font-extrabold text-sm sm:text-base leading-snug drop-shadow-md line-clamp-2">
-                        {work.title}
-                      </h3>
                     </div>
                   </div>
 
@@ -489,15 +501,16 @@ export const GallerySection: React.FC = () => {
                             {work.studentName}
                           </h4>
                           <div className="text-[11px] text-slate-500">
-                            ห้อง {work.studentClass} • เลขที่ {work.studentNo || '-'}
+                            ห้อง {work.studentClass}
                           </div>
                         </div>
                       </div>
                     </div>
 
-                    {/* Work Summary */}
-                    <p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                      {work.summary}
+                    {/* Work Award Clean Title */}
+                    <p className="text-xs font-bold text-amber-700 bg-amber-50/80 border border-amber-200/80 rounded-xl px-2.5 py-1.5 flex items-center gap-1.5">
+                      <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                      <span>{getAwardTitle(work.awardRank)}</span>
                     </p>
 
                     {/* Tools badges */}
@@ -558,20 +571,17 @@ export const GallerySection: React.FC = () => {
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-xs bg-amber-400 text-amber-950 font-black px-2 py-0.5 rounded-md">
-                      {currentModalWork.awardBadge}
+                      {getAwardBadge(currentModalWork.awardRank)}
                     </span>
                     <span className="text-xs font-bold text-slate-300">
                       ห้อง {currentModalWork.studentClass}
-                    </span>
-                    <span className="text-xs text-slate-400 hidden sm:inline">
-                      • เลขที่ {currentModalWork.studentNo || '-'}
                     </span>
                     <span className="text-xs text-indigo-400 font-bold">
                       (คนที่ {modalIndex + 1} จาก {filteredWorks.length})
                     </span>
                   </div>
                   <h3 className="text-xs sm:text-sm font-bold text-white truncate max-w-xs sm:max-w-md">
-                    {currentModalWork.studentName} : {currentModalWork.title}
+                    {currentModalWork.studentName}
                   </h3>
                 </div>
               </div>
@@ -688,135 +698,97 @@ export const GallerySection: React.FC = () => {
 
               {/* Right Sidebar: Details, Teacher Feedback & Classmate Cheers */}
               <div className="w-full lg:w-96 bg-slate-900 border-t lg:border-t-0 lg:border-l border-white/10 flex flex-col text-slate-100 overflow-y-auto max-h-[40vh] lg:max-h-full">
-                {/* Tabs */}
-                <div className="flex border-b border-white/10 bg-slate-950/40 shrink-0">
-                  <button
-                    onClick={() => setActiveInfoTab('details')}
-                    className={`flex-1 py-3 text-xs font-bold transition cursor-pointer ${
-                      activeInfoTab === 'details'
-                        ? 'text-amber-400 border-b-2 border-amber-400 bg-white/5'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    รายละเอียดผลงาน
-                  </button>
-                  <button
-                    onClick={() => setActiveInfoTab('comments')}
-                    className={`flex-1 py-3 text-xs font-bold transition cursor-pointer flex items-center justify-center gap-1.5 ${
-                      activeInfoTab === 'comments'
-                        ? 'text-amber-400 border-b-2 border-amber-400 bg-white/5'
-                        : 'text-slate-400 hover:text-white'
-                    }`}
-                  >
-                    <MessageCircle className="w-3.5 h-3.5" />
-                    <span>ให้กำลังใจ ({(cheersList[currentModalWork.id] || []).length})</span>
-                  </button>
+                {/* Sidebar Header */}
+                <div className="px-5 py-3.5 border-b border-white/10 bg-slate-950/40 shrink-0 flex items-center justify-between">
+                  <span className="text-xs font-bold text-amber-400">รายละเอียดผลงาน</span>
+                  <span className="text-[10px] text-slate-400">งานสวนพฤกษศาสตร์</span>
                 </div>
 
-                {/* Tab Content */}
+                {/* Sidebar Content */}
                 <div className="p-4 sm:p-5 flex-1 overflow-y-auto space-y-4 text-xs">
-                  {activeInfoTab === 'details' ? (
-                    <>
-                      {/* Award Badge Box */}
-                      <div className="bg-gradient-to-r from-amber-500/20 via-yellow-500/15 to-transparent border border-amber-400/40 rounded-2xl p-3.5 space-y-1">
-                        <div className="flex items-center justify-between">
-                          <span className="text-amber-300 font-black text-sm">
-                            {currentModalWork.awardBadge}
-                          </span>
-                        </div>
-                        <div className="text-white font-bold text-sm">
-                          {currentModalWork.studentName}
-                        </div>
-                        <div className="text-slate-400 text-[11px]">
-                          ห้อง {currentModalWork.studentClass} • เลขที่ {currentModalWork.studentNo || '-'} • โรงเรียนสาธิตแห่ง มก.
-                        </div>
-                      </div>
-
-                      {/* Topic & Botany Info */}
-                      <div className="space-y-1.5 bg-white/5 p-3.5 rounded-2xl border border-white/10">
-                        <span className="text-[11px] font-black text-indigo-300 flex items-center gap-1">
-                          <Leaf className="w-3.5 h-3.5 text-emerald-400" />
-                          <span>หัวข้องานสวนพฤกษศาสตร์:</span>
-                        </span>
-                        <div className="text-white font-bold">
-                          {currentModalWork.botanicalTopic || '๗ พฤกษาถั่วนานาพรรณ'}
-                        </div>
-                        <p className="text-slate-300 leading-relaxed text-[11px]">
-                          {currentModalWork.summary}
-                        </p>
-                      </div>
-
-                      {/* Highlights */}
-                      <div className="space-y-2 bg-white/5 p-3.5 rounded-2xl border border-white/10">
-                        <span className="text-[11px] font-black text-slate-300">
-                          จุดเด่นของผลงาน:
-                        </span>
-                        <ul className="space-y-1.5 text-slate-300 text-[11px]">
-                          {currentModalWork.highlights.map((h, i) => (
-                            <li key={i} className="flex items-start gap-1.5">
-                              <span className="text-emerald-400 font-bold shrink-0">✓</span>
-                              <span>{h}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Tools Used */}
-                      <div className="flex items-center gap-2 pt-1">
-                        <span className="text-slate-400 text-[11px]">เครื่องมือ:</span>
-                        {currentModalWork.toolsUsed.map((tool, i) => (
-                          <span
-                            key={i}
-                            className="text-[10px] bg-indigo-900/60 text-indigo-300 border border-indigo-700/50 px-2 py-0.5 rounded-md font-bold"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </>
-                  ) : (
-                    /* Classmate Cheers Tab */
-                    <div className="space-y-3">
-                      {/* Input */}
-                      <div className="space-y-2">
-                        <textarea
-                          rows={2}
-                          placeholder="พิมพ์ข้อความชมเพื่อน เช่น เก่งมากเลยเพื่อน..."
-                          value={cheerMessage}
-                          onChange={(e) => setCheerMessage(e.target.value)}
-                          className="w-full text-xs p-2.5 bg-slate-950 border border-white/15 rounded-xl focus:outline-hidden focus:border-indigo-400 text-white placeholder-slate-500"
-                        />
-                        <button
-                          onClick={() => handleAddCheer(currentModalWork.id)}
-                          className="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl transition shadow-xs cursor-pointer"
-                        >
-                          ส่งข้อความให้กำลังใจเพื่อน 💬
-                        </button>
-                      </div>
-
-                      {/* Cheers list */}
-                      <div className="space-y-2 max-h-56 overflow-y-auto pr-1">
-                        {(cheersList[currentModalWork.id] || []).length === 0 ? (
-                          <p className="text-xs text-slate-500 text-center py-6">
-                            ยังไม่มีข้อความ เป็นคนแรกที่ให้กำลังใจเพื่อนนะ!
-                          </p>
-                        ) : (
-                          (cheersList[currentModalWork.id] || []).map((ch, idx) => (
-                            <div
-                              key={idx}
-                              className="bg-white/5 p-2.5 rounded-xl border border-white/10 text-xs space-y-0.5"
-                            >
-                              <div className="flex justify-between text-[10px] font-bold text-slate-400">
-                                <span className="text-indigo-300">{ch.name}</span>
-                                <span>{ch.time}</span>
-                              </div>
-                              <p className="text-slate-200">{ch.text}</p>
-                            </div>
-                          ))
-                        )}
-                      </div>
+                  {/* Award Badge Box */}
+                  <div className="bg-gradient-to-r from-amber-500/20 via-yellow-500/15 to-transparent border border-amber-400/40 rounded-2xl p-3.5 space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-amber-300 font-black text-sm flex items-center gap-1.5">
+                        <Trophy className="w-4 h-4 text-amber-400" />
+                        <span>{getAwardTitle(currentModalWork.awardRank)}</span>
+                      </span>
                     </div>
-                  )}
+                    <div className="text-white font-bold text-sm">
+                      {currentModalWork.studentName}
+                    </div>
+                    <div className="text-slate-400 text-[11px]">
+                      ห้อง {currentModalWork.studentClass} • โรงเรียนสาธิตแห่ง มก.
+                    </div>
+                  </div>
+
+                  {/* Topic & Botany Info */}
+                  <div className="space-y-1.5 bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                    <span className="text-[11px] font-black text-indigo-300 flex items-center gap-1">
+                      <Leaf className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>หัวข้องานสวนพฤกษศาสตร์:</span>
+                    </span>
+                    <div className="text-white font-bold">
+                      {currentModalWork.botanicalTopic || '๗ พฤกษาถั่วนานาพรรณ'}
+                    </div>
+                    <p className="text-amber-300 font-bold text-xs flex items-center gap-1.5 pt-0.5">
+                      <Trophy className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span>{getAwardTitle(currentModalWork.awardRank)}</span>
+                    </p>
+                  </div>
+
+                  {/* Interactive Emoji Reaction System */}
+                  <div className="space-y-2.5 bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-black text-amber-300 flex items-center gap-1.5">
+                        <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                        <span>กด Emoji ชื่นชมผลงาน:</span>
+                      </span>
+                      <span className="text-[10px] text-slate-400">แตะเพื่อส่งกำลังใจ</span>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2 pt-0.5">
+                      {EMOJI_OPTIONS.map((item) => {
+                        const count =
+                          emojiReactions[currentModalWork.id]?.[item.emoji] ?? item.defaultCount;
+                        const isClicked = recentEmojiKey === `${currentModalWork.id}-${item.emoji}`;
+
+                        return (
+                          <button
+                            key={item.emoji}
+                            type="button"
+                            onClick={() => handleEmojiClick(currentModalWork.id, item.emoji)}
+                            className={`flex items-center justify-center gap-1.5 py-2 px-2 bg-slate-950/70 hover:bg-indigo-950/90 active:scale-90 border rounded-xl transition duration-150 cursor-pointer group ${
+                              isClicked
+                                ? 'border-amber-400 bg-amber-400/25 scale-105'
+                                : 'border-white/10 hover:border-amber-400/40'
+                            }`}
+                            title={`กดส่ง ${item.label}`}
+                          >
+                            <span className="text-base group-hover:scale-125 transition-transform duration-200">
+                              {item.emoji}
+                            </span>
+                            <span className="text-xs font-bold text-slate-200 group-hover:text-amber-300">
+                              {count}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  {/* Tools Used */}
+                  <div className="flex items-center gap-2 pt-1">
+                    <span className="text-slate-400 text-[11px]">เครื่องมือ:</span>
+                    {currentModalWork.toolsUsed.map((tool, i) => (
+                      <span
+                        key={i}
+                        className="text-[10px] bg-indigo-900/60 text-indigo-300 border border-indigo-700/50 px-2 py-0.5 rounded-md font-bold"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Bottom Quick Switch Thumbnail Strip */}

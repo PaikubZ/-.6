@@ -37,6 +37,7 @@ export interface Lesson {
   homeworkDue?: string;
   scoreWeight?: string;
   downloadUrl?: string;
+  pdfUrl?: string;
 }
 
 export interface GameItem {
