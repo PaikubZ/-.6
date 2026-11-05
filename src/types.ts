@@ -57,25 +57,31 @@ export interface GameItem {
   featured?: boolean;
 }
 
+export type AwardRank = 'winner' | 'runner1' | 'runner2';
+
 export interface StudentWork {
   id: string;
   title: string;
   category: 'infographic' | 'scratch' | 'flowchart' | 'presentation';
   categoryLabel: string;
   studentName: string;
-  studentNickname: string;
+  studentNickname?: string;
   studentClass: string;
-  studentNo: number;
+  studentNo?: number;
   likes: number;
   hasLiked?: boolean;
   date: string;
   imageSrc: string;
-  previewColor: string;
+  previewColor?: string;
   summary: string;
   highlights: string[];
   teacherComment: string;
   toolsUsed: string[];
   scoreGrade?: string;
+  awardRank: AwardRank;
+  awardTitle: string;
+  awardBadge: string;
+  botanicalTopic?: string;
 }
 
 export interface TeacherItem {
