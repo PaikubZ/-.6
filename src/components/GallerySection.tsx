@@ -181,11 +181,79 @@ export const GallerySection: React.FC = () => {
     setTimeout(() => setDriveToast(false), 4500);
   };
 
+  const triggerAwardCelebration = useCallback((rank: AwardRank, e?: React.MouseEvent) => {
+    const origin =
+      e && typeof window !== 'undefined' && window.innerWidth > 0 && window.innerHeight > 0
+        ? {
+            x: Math.min(Math.max(e.clientX / window.innerWidth, 0.1), 0.9),
+            y: Math.min(Math.max(e.clientY / window.innerHeight, 0.1), 0.9)
+          }
+        : { x: 0.5, y: 0.55 };
+
+    if (rank === 'winner') {
+      confetti({
+        particleCount: 85,
+        spread: 80,
+        startVelocity: 42,
+        origin,
+        zIndex: 9999,
+        disableForReducedMotion: true,
+        colors: ['#FBBF24', '#F59E0B', '#FEF08A', '#FB7185', '#34D399', '#60A5FA']
+      });
+      window.setTimeout(() => {
+        confetti({
+          particleCount: 40,
+          angle: 60,
+          spread: 55,
+          origin: { x: 0.18, y: 0.65 },
+          zIndex: 9999,
+          disableForReducedMotion: true,
+          colors: ['#FBBF24', '#F59E0B', '#FEF08A', '#FB7185', '#34D399']
+        });
+        confetti({
+          particleCount: 40,
+          angle: 120,
+          spread: 55,
+          origin: { x: 0.82, y: 0.65 },
+          zIndex: 9999,
+          disableForReducedMotion: true,
+          colors: ['#FBBF24', '#F59E0B', '#FEF08A', '#60A5FA', '#A78BFA']
+        });
+      }, 180);
+      return;
+    }
+
+    if (rank === 'runner1') {
+      confetti({
+        particleCount: 60,
+        spread: 70,
+        startVelocity: 36,
+        origin,
+        zIndex: 9999,
+        disableForReducedMotion: true,
+        colors: ['#E2E8F0', '#94A3B8', '#38BDF8', '#60A5FA', '#FBBF24']
+      });
+      return;
+    }
+
+    confetti({
+      particleCount: 55,
+      spread: 65,
+      startVelocity: 34,
+      origin,
+      zIndex: 9999,
+      disableForReducedMotion: true,
+      colors: ['#FB923C', '#F59E0B', '#FDE047', '#34D399', '#F472B6']
+    });
+  }, []);
+
   const handleEmojiClick = (workId: string, emoji: string) => {
     confetti({
       particleCount: 28,
       spread: 60,
       origin: { y: 0.65 },
+      zIndex: 9999,
+      disableForReducedMotion: true,
       colors: ['#F59E0B', '#10B981', '#6366F1', '#EC4899', '#3B82F6']
     });
 
@@ -241,6 +309,8 @@ export const GallerySection: React.FC = () => {
               particleCount: 50,
               spread: 60,
               origin: { y: 0.75 },
+              zIndex: 9999,
+              disableForReducedMotion: true,
               colors: ['#F43F5E', '#FB7185', '#FDA4AF', '#F59E0B', '#10B981']
             });
           }
@@ -256,10 +326,11 @@ export const GallerySection: React.FC = () => {
   };
 
 
-  // Open modal at given index
-  const openModal = (work: StudentWork) => {
+  // Open modal at given index with celebration confetti
+  const openModal = (work: StudentWork, e?: React.MouseEvent) => {
     const idx = filteredWorks.findIndex((w) => w.id === work.id);
     if (idx !== -1) {
+      triggerAwardCelebration(work.awardRank, e);
       setModalIndex(idx);
       setZoomLevel(1);
     }
@@ -871,7 +942,7 @@ export const GallerySection: React.FC = () => {
 
                     {/* Infographic Image */}
                     <div
-                      onClick={() => openModal(podiumRunner1)}
+                      onClick={(e) => openModal(podiumRunner1, e)}
                       className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-slate-900 border-2 border-slate-300 cursor-pointer group"
                     >
                       <img
@@ -884,7 +955,7 @@ export const GallerySection: React.FC = () => {
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          openModal(podiumRunner1);
+                          openModal(podiumRunner1, e);
                         }}
                         className="absolute bottom-2 right-2 bg-slate-900/85 hover:bg-indigo-600 text-white text-[11px] font-black px-2.5 py-1 rounded-full border border-white/40 shadow-md flex items-center gap-1 cursor-pointer transition"
                       >
@@ -925,6 +996,16 @@ export const GallerySection: React.FC = () => {
                         <span className="tabular-nums">{podiumRunner1.likes}</span>
                       </button>
                     </div>
+
+                    {/* View Award Celebration Button */}
+                    <button
+                      type="button"
+                      onClick={(e) => openModal(podiumRunner1, e)}
+                      className="mt-3 w-full py-2 px-3 rounded-xl bg-gradient-to-r from-sky-100 via-white to-slate-200 hover:from-sky-200 hover:to-slate-200 text-slate-900 font-black text-xs border-2 border-slate-800 shadow-[0_3px_0_#1e293b] active:translate-y-0.5 active:shadow-[0_1px_0_#1e293b] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Trophy className="w-3.5 h-3.5 text-slate-700 shrink-0" />
+                      <span>🎉 ดูรางวัล &amp; ผลงาน</span>
+                    </button>
                   </div>
 
                   {/* 3D Silver Cylindrical Pedestal */}
@@ -964,7 +1045,7 @@ export const GallerySection: React.FC = () => {
 
                     {/* Infographic Image */}
                     <div
-                      onClick={() => openModal(podiumWinner)}
+                      onClick={(e) => openModal(podiumWinner, e)}
                       className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-slate-900 border-2 border-amber-400 cursor-pointer group"
                     >
                       <img
@@ -977,7 +1058,7 @@ export const GallerySection: React.FC = () => {
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          openModal(podiumWinner);
+                          openModal(podiumWinner, e);
                         }}
                         className="absolute bottom-2 right-2 bg-slate-900/85 hover:bg-indigo-600 text-white text-[11px] font-black px-2.5 py-1 rounded-full border border-white/40 shadow-md flex items-center gap-1 cursor-pointer transition"
                       >
@@ -1018,6 +1099,16 @@ export const GallerySection: React.FC = () => {
                         <span className="tabular-nums">{podiumWinner.likes}</span>
                       </button>
                     </div>
+
+                    {/* View Award Celebration Button */}
+                    <button
+                      type="button"
+                      onClick={(e) => openModal(podiumWinner, e)}
+                      className="mt-3 w-full py-2 px-3 rounded-xl bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-400 hover:from-amber-300 hover:to-amber-400 text-amber-950 font-black text-xs border-2 border-slate-900 shadow-[0_3px_0_#1e293b] active:translate-y-0.5 active:shadow-[0_1px_0_#1e293b] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Trophy className="w-3.5 h-3.5 text-amber-900 shrink-0" />
+                      <span>🎉 ดูรางวัลชนะเลิศ</span>
+                    </button>
                   </div>
 
                   {/* Tall 3D Gold Cylindrical Pedestal */}
@@ -1048,7 +1139,7 @@ export const GallerySection: React.FC = () => {
 
                     {/* Infographic Image */}
                     <div
-                      onClick={() => openModal(podiumRunner2)}
+                      onClick={(e) => openModal(podiumRunner2, e)}
                       className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-slate-900 border-2 border-amber-500/60 cursor-pointer group"
                     >
                       <img
@@ -1061,7 +1152,7 @@ export const GallerySection: React.FC = () => {
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          openModal(podiumRunner2);
+                          openModal(podiumRunner2, e);
                         }}
                         className="absolute bottom-2 right-2 bg-slate-900/85 hover:bg-indigo-600 text-white text-[11px] font-black px-2.5 py-1 rounded-full border border-white/40 shadow-md flex items-center gap-1 cursor-pointer transition"
                       >
@@ -1102,6 +1193,16 @@ export const GallerySection: React.FC = () => {
                         <span className="tabular-nums">{podiumRunner2.likes}</span>
                       </button>
                     </div>
+
+                    {/* View Award Celebration Button */}
+                    <button
+                      type="button"
+                      onClick={(e) => openModal(podiumRunner2, e)}
+                      className="mt-3 w-full py-2 px-3 rounded-xl bg-gradient-to-r from-orange-200 via-amber-100 to-orange-300 hover:from-orange-300 hover:to-amber-200 text-amber-950 font-black text-xs border-2 border-slate-800 shadow-[0_3px_0_#1e293b] active:translate-y-0.5 active:shadow-[0_1px_0_#1e293b] transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    >
+                      <Trophy className="w-3.5 h-3.5 text-amber-800 shrink-0" />
+                      <span>🎉 ดูรางวัล &amp; ผลงาน</span>
+                    </button>
                   </div>
 
                   {/* 3D Bronze/Copper Cylindrical Pedestal */}
@@ -1192,7 +1293,7 @@ export const GallerySection: React.FC = () => {
 
                       {/* Infographic Image Box */}
                       <div
-                        onClick={() => openModal(work)}
+                        onClick={(e) => openModal(work, e)}
                         className="relative aspect-4/3 w-full rounded-2xl overflow-hidden bg-slate-900 border-2 border-slate-200 cursor-pointer"
                       >
                         <img
@@ -1207,7 +1308,7 @@ export const GallerySection: React.FC = () => {
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            openModal(work);
+                            openModal(work, e);
                           }}
                           className="absolute bottom-2.5 right-2.5 bg-slate-900/85 hover:bg-indigo-600 text-white text-[11px] font-black px-3 py-1 rounded-full border border-white/40 shadow-md flex items-center gap-1 cursor-pointer transition"
                         >
@@ -1334,6 +1435,17 @@ export const GallerySection: React.FC = () => {
                     </button>
                   )}
                 </div>
+
+                {/* Celebrate Button */}
+                <button
+                  type="button"
+                  onClick={(e) => triggerAwardCelebration(currentModalWork.awardRank, e)}
+                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-black bg-amber-400 hover:bg-amber-300 text-amber-950 shadow-md transition active:scale-95 cursor-pointer"
+                  title="จุดพลุฉลองรางวัล"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>ฉลองรางวัล!</span>
+                </button>
 
                 {/* Like Button */}
                 <button

@@ -40,6 +40,42 @@ export const LESSONS: Lesson[] = [
     downloadUrl: 'https://drive.google.com/file/d/1Yn33BZRXxXhmg-Be5W52TBNRxcKU6WhI/view?usp=sharing',
     pdfUrl: '/assets/aistudio/______________b9259520.pdf'
   },
+  {
+    id: 'lesson-term2-2',
+    semester: 2,
+    termLabel: 'ภาคปลาย',
+    week: 2,
+    dateRange: '9 - 13 พ.ย. 69',
+    unitNumber: 1,
+    unitName: 'การแก้ปัญหาอย่างเป็นระบบ & ผังงาน (Flowchart)',
+    title: 'เชื่อมโยงบล็อกคำสั่ง Scratch สู่ผังงานดิจิทัลด้วย Diagrams.net',
+    subtitle: 'ทบทวนผ่านเกม Baamboozle เตรียมสอบ Bebras 2026 และฝึกวาดผังงาน Flowchart ทั้ง 3 รูปแบบบน app.diagrams.net',
+    description: 'ทบทวนบทเรียนผ่านเกมออนไลน์ (Baamboozle) พร้อมแจ้งกำหนดการสอบ Bebras Thailand Challenge 2026 ฝึกวิเคราะห์สถานการณ์และเชื่อมโยงบล็อกคำสั่ง Scratch สู่ผังงาน (Flowchart) ทั้ง 3 รูปแบบ และลงมือวาดผังงานจริงด้วยเครื่องมือออนไลน์ app.diagrams.net',
+    tasks: [
+      'ทบทวนบทเรียนผ่านเกมออนไลน์ (Baamboozle) และแจ้งกำหนดการสอบ Bebras Thailand Challenge 2026',
+      'ฝึกวิเคราะห์สถานการณ์และเชื่อมโยงบล็อกคำสั่ง Scratch สู่ผังงาน (Flowchart) ทั้ง 3 รูปแบบ (เรียงลำดับ, เงื่อนไข, ทำซ้ำ)',
+      'เรียนรู้การใช้งานเครื่องมือออนไลน์ app.diagrams.net สำหรับวาดสัญลักษณ์ เชื่อมเส้น และบันทึกไฟล์ภาพผังงาน',
+      'ปฏิบัติใบงานเขียนผังงาน Flowchart 2 โจทย์ (ซื้อตั๋วรถไฟฟ้า และ ตู้กดเครื่องดื่มอัตโนมัติ) เก็บคะแนนสะสม 8 คะแนน'
+    ],
+    keyPoints: [
+      'การเชื่อมโยงบล็อกคำสั่ง Scratch สู่ผังงาน Flowchart ทั้ง 3 โครงสร้าง ได้แก่ แบบเรียงลำดับ, แบบมีเงื่อนไข และแบบทำซ้ำ',
+      'การใช้งานเครื่องมือออนไลน์ app.diagrams.net เพื่อวาดสัญลักษณ์ เชื่อมเส้นทิศทาง และส่งออกเป็นไฟล์ภาพผังงาน',
+      'การวิเคราะห์และเขียนผังงานจากโจทย์สถานการณ์จริง: การซื้อตั๋วรถไฟฟ้า และตู้กดเครื่องดื่มอัตโนมัติ',
+      'การทบทวนความรู้เชิงคำนวณผ่านเกม Baamboozle และเตรียมตัวสอบ Bebras Thailand Challenge 2026'
+    ],
+    pdfTitle: 'ใบงานปฏิบัติที่ 2: การเขียนผังงาน Flowchart ด้วย app.diagrams.net.pdf',
+    pdfPages: 4,
+    pdfSize: '2.2 MB',
+    learningObjectives: [
+      'วิเคราะห์สถานการณ์และเชื่อมโยงบล็อกคำสั่ง Scratch สู่ผังงาน (Flowchart) ทั้ง 3 รูปแบบได้',
+      'ใช้งานเครื่องมือออนไลน์ app.diagrams.net วาดสัญลักษณ์ เชื่อมเส้น และบันทึกไฟล์ภาพผังงานได้อย่างถูกต้อง',
+      'ออกแบบผังงาน Flowchart สำหรับโจทย์ซื้อตั๋วรถไฟฟ้าและตู้กดเครื่องดื่มอัตโนมัติได้'
+    ],
+    difficulty: 'ปานกลาง',
+    scoreWeight: 'เก็บคะแนนสะสม 8 คะแนน',
+    homeworkDue: 'ส่งใบงานปฏิบัติในคาบเรียน',
+    downloadUrl: 'https://canva.link/7ayd2of59o1i08y'
+  },
 
   // ================= ภาคต้น (Semester 1) =================
   {

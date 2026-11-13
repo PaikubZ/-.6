@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Lesson } from '../types';
 import { LESSONS } from '../data/mockData';
 import {
@@ -16,12 +16,47 @@ import {
 
 interface LessonsSectionProps {
   onOpenPdf: (lesson: Lesson) => void;
+  targetLessonId?: string | null;
+  onClearTargetLesson?: () => void;
 }
 
-export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => {
+export const LessonsSection: React.FC<LessonsSectionProps> = ({
+  onOpenPdf,
+  targetLessonId,
+  onClearTargetLesson
+}) => {
   const [selectedSemester, setSelectedSemester] = useState<1 | 2>(2);
   const [selectedUnit, setSelectedUnit] = useState<number | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [highlightedLessonId, setHighlightedLessonId] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!targetLessonId) return;
+    const targetLesson = LESSONS.find((l) => l.id === targetLessonId);
+    if (targetLesson) {
+      setSelectedSemester(targetLesson.semester);
+      setSelectedUnit('all');
+      setSearchQuery('');
+      setHighlightedLessonId(targetLessonId);
+
+      const scrollTimer = window.setTimeout(() => {
+        const element = document.getElementById(targetLessonId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        onClearTargetLesson?.();
+      }, 100);
+
+      const highlightTimer = window.setTimeout(() => {
+        setHighlightedLessonId((prev) => (prev === targetLessonId ? null : prev));
+      }, 3500);
+
+      return () => {
+        window.clearTimeout(scrollTimer);
+        window.clearTimeout(highlightTimer);
+      };
+    }
+  }, [targetLessonId, onClearTargetLesson]);
 
   const unitsTerm2 = [
     { number: 'all', title: 'ทั้งหมด (ภาคปลาย)' },
@@ -178,10 +213,17 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
                 ? 'bg-amber-100 text-amber-800 border-amber-200'
                 : 'bg-rose-100 text-rose-800 border-rose-200';
 
+            const isHighlighted = highlightedLessonId === lesson.id;
+
             return (
               <div
                 key={lesson.id}
-                className="bg-white rounded-3xl border-2 border-slate-200 hover:border-blue-400 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-xl"
+                id={lesson.id}
+                className={`scroll-mt-24 bg-white rounded-3xl border-2 transition-all duration-300 overflow-hidden ${
+                  isHighlighted
+                    ? 'border-blue-500 ring-4 ring-amber-300 shadow-xl'
+                    : 'border-slate-200 hover:border-blue-400 shadow-sm hover:shadow-xl'
+                }`}
               >
                 {/* Lesson Header Banner */}
                 <div className="p-5 sm:p-7 border-b border-slate-100 space-y-3">
@@ -299,7 +341,9 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({ onOpenPdf }) => 
                               <ExternalLink className="w-3.5 h-3.5 text-amber-200" />
                             </div>
                             <div className="text-[11px] text-sky-100">
-                              คลิกเพื่อเปิดและดาวน์โหลดไฟล์บน Google Drive
+                              {lesson.downloadUrl.includes('canva')
+                                ? 'คลิกเพื่อเปิดสื่อบทเรียนบน Canva'
+                                : 'คลิกเพื่อเปิดและดาวน์โหลดไฟล์บน Google Drive'}
                             </div>
                           </div>
                         </div>

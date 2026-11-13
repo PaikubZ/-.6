@@ -82,7 +82,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                 กิจกรรมประจำสัปดาห์ ภาคปลาย
               </h1>
               <div className="inline-block mt-2 px-3.5 py-1 bg-amber-400 text-amber-950 font-bold rounded-xl text-sm sm:text-base shadow-sm">
-                📅 สัปดาห์ที่ 1 (3 - 6 พฤศจิกายน 2569)
+                📅 สัปดาห์ที่ 2 (9 - 13 พฤศจิกายน 2569)
               </div>
             </div>
 
@@ -93,7 +93,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   1
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  ดูสื่อวิดีโอการเรียนรู้ เรื่อง "ความสำคัญของปัญหา (ลิปดา&amp;โพล่า)" และเรื่อง "ผังงาน (Flowchart)"
+                  ทบทวนบทเรียนผ่านเกมออนไลน์ (Baamboozle) และแจ้งกำหนดการสอบ Bebras Thailand Challenge 2026
                 </p>
               </div>
 
@@ -102,7 +102,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   2
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  ศึกษาบทเรียนขั้นตอนการแก้ปัญหาอย่างเป็นระบบ 4 ขั้นตอน (วิเคราะห์ปัญหา &gt; วางแผน &gt; ดำเนินการ &gt; ตรวจสอบ) และแนวคิดเชิงตรรกะ (ลำดับขั้นตอน, มีเงื่อนไข, วนซ้ำ)
+                  ฝึกวิเคราะห์สถานการณ์และเชื่อมโยงบล็อกคำสั่ง Scratch สู่ผังงาน (Flowchart) ทั้ง 3 รูปแบบ (เรียงลำดับ, เงื่อนไข, ทำซ้ำ)
                 </p>
               </div>
 
@@ -111,7 +111,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   3
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  ทำใบงาน เรื่อง "การแก้ปัญหาอย่างเป็นระบบ" (เก็บคะแนนสะสม 5 คะแนน)
+                  เรียนรู้การใช้งานเครื่องมือออนไลน์ app.diagrams.net สำหรับวาดสัญลักษณ์ เชื่อมเส้น และบันทึกไฟล์ภาพผังงาน
                 </p>
               </div>
 
@@ -120,7 +120,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   4
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  สรุปความรู้การเขียนรหัสลำลอง (Pseudocode) และการใช้สัญลักษณ์ผังงาน (Flowchart)
+                  ปฏิบัติใบงานเขียนผังงาน Flowchart 2 โจทย์ (ซื้อตั๋วรถไฟฟ้า และ ตู้กดเครื่องดื่มอัตโนมัติ) เก็บคะแนนสะสม 8 คะแนน
                 </p>
               </div>
             </div>
@@ -128,11 +128,15 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
             {/* Quick Action button */}
             <div className="flex flex-wrap gap-3 pt-2">
               <button
-                onClick={() => onNavigate('lessons')}
+                onClick={() =>
+                  onOpenLessonDetails
+                    ? onOpenLessonDetails('lesson-term2-2')
+                    : onNavigate('lessons')
+                }
                 className="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 active:scale-95 text-amber-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2"
               >
                 <BookOpen className="w-4 h-4" />
-                <span>ดูบทเรียนสัปดาห์ที่ 1</span>
+                <span>ดูบทเรียนสัปดาห์ที่ 2</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -150,13 +154,13 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   />
                 </div>
                 <div className="inline-block bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full mb-2 uppercase tracking-wider shadow-sm">
-                  สัปดาห์ที่ 1 ภาคปลาย
+                  สัปดาห์ที่ 2 ภาคปลาย
                 </div>
                 <h3 className="text-lg font-bold text-white mb-1">
-                  "ยินดีต้อนรับสู่ภาคปลาย!"
+                  "ลุยออกแบบผังงานดิจิทัล!"
                 </h3>
                 <p className="text-xs text-sky-100">
-                  ฝึกคิดเป็นระบบและเขียนผังงาน Flowchart สนุกๆ ไปด้วยกันนะคนเก่ง 🌟
+                  ฝึกสร้าง Flowchart ด้วย Diagrams.net และเตรียมพร้อมสอบ Bebras 2026 🚀
                 </p>
               </div>
             </div>
@@ -320,7 +324,11 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                 ✨ นักเรียนสามารถติดตามภารกิจประจำสัปดาห์ได้จากป้ายด้านบนครับ
               </span>
               <button
-                onClick={() => onNavigate('lessons')}
+                onClick={() =>
+                  onOpenLessonDetails
+                    ? onOpenLessonDetails('lesson-term2-2')
+                    : onNavigate('lessons')
+                }
                 className="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-bold rounded-full shadow-xs transition flex items-center gap-1.5"
               >
                 <BookOpen className="w-3.5 h-3.5" />

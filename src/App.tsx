@@ -14,10 +14,17 @@ export default function App() {
   const [currentTab, setCurrentTab] = useState<PageTab>('home');
   const [activePdfLesson, setActivePdfLesson] = useState<Lesson | null>(null);
   const [isTimerModalOpen, setIsTimerModalOpen] = useState<boolean>(false);
+  const [targetLessonId, setTargetLessonId] = useState<string | null>(null);
 
   const handleTabChange = (tab: PageTab) => {
+    setTargetLessonId(null);
     setCurrentTab(tab);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleOpenLessonDetails = (lessonId: string) => {
+    setTargetLessonId(lessonId);
+    setCurrentTab('lessons');
   };
 
   return (
@@ -32,12 +39,17 @@ export default function App() {
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         {currentTab === 'home' && (
-          <HomeSection onNavigate={handleTabChange} />
+          <HomeSection
+            onNavigate={handleTabChange}
+            onOpenLessonDetails={handleOpenLessonDetails}
+          />
         )}
 
         {currentTab === 'lessons' && (
           <LessonsSection
             onOpenPdf={(lesson) => setActivePdfLesson(lesson)}
+            targetLessonId={targetLessonId}
+            onClearTargetLesson={() => setTargetLessonId(null)}
           />
         )}
 
