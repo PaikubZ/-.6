@@ -60,8 +60,20 @@ export interface GameItem {
 
 export type AwardRank = 'winner' | 'runner1' | 'runner2';
 
+export interface ShowcaseProject {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  academicYear: string;
+  termLabel: string;
+  categoryLabel: string;
+  previewImages: string[];
+}
+
 export interface StudentWork {
   id: string;
+  projectId?: string;
   title: string;
   category: 'infographic' | 'scratch' | 'flowchart' | 'presentation';
   categoryLabel: string;

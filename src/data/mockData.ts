@@ -1,4 +1,4 @@
-import { Announcement, Lesson, GameItem, StudentWork, TeacherItem } from '../types';
+import { Announcement, Lesson, GameItem, StudentWork, TeacherItem, ShowcaseProject } from '../types';
 
 export const ANNOUNCEMENTS: Announcement[] = [];
 
@@ -427,6 +427,24 @@ export const GAMES_LIST: GameItem[] = [
     timeRecommended: '10-15 นาทีเท่านั้น',
     tags: ['Y8', 'อาร์เคด', 'ฟิสิกส์'],
     color: 'from-cyan-500 to-blue-600'
+  }
+];
+
+export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
+  {
+    id: 'botanical-garden-2569',
+    title: 'งานสวนพฤกษศาสตร์โรงเรียน',
+    subtitle: 'เมล็ดพันธุ์แห่งคุณค่า ๗ พฤกษาถั่วนานาพรรณ',
+    description:
+      'โครงการประกวดการสร้างสื่ออินโฟกราฟิกด้วยเว็บไซต์ Canva วิชาเทคโนโลยี (วิทยาการคำนวณ) รวบรวมผลงานรางวัลชนะเลิศอันดับ 1 และรองชนะเลิศ จากห้อง ป.6/1 - ป.6/7',
+    academicYear: 'ปีการศึกษา 2569',
+    termLabel: 'ภาคต้น',
+    categoryLabel: 'อินโฟกราฟิก Canva',
+    previewImages: [
+      'https://lh3.googleusercontent.com/d/1ErM_khsjFml53CJ4B1BecNVoPqtIlEw0',
+      'https://lh3.googleusercontent.com/d/1ER56uKYpf48AI4h0W_FiQCpDwdaR2SqD',
+      'https://lh3.googleusercontent.com/d/1OsmVkYJwoYh9h_0JW9_q9Y2IYw0xS1VJ'
+    ]
   }
 ];
 
