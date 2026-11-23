@@ -70,7 +70,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Top Festive Christmas Ribbon */}
       <div className="bg-gradient-to-r from-red-700 via-emerald-700 to-red-700 text-white text-xs py-1.5 px-4 font-bold flex items-center justify-center text-center">
         <span className="inline truncate">
-          🎄 Merry Christmas! วิชาเทคโนโลยี ชั้นประถมศึกษาปีที่ 6 ❄️
+          🎄 วิชาเทคโนโลยี ชั้นประถมศึกษาปีที่ 6 ❄️
         </span>
       </div>
 
