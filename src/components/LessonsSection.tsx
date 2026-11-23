@@ -10,7 +10,6 @@ import {
   Sparkles,
   Calendar,
   CheckCircle2,
-  Award,
   ExternalLink
 } from 'lucide-react';
 
@@ -206,13 +205,6 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
       ) : (
         <div className="space-y-6">
           {filteredLessons.map((lesson) => {
-            const difficultyBadge =
-              lesson.difficulty === 'ง่าย'
-                ? 'bg-emerald-100 text-emerald-800 border-emerald-200'
-                : lesson.difficulty === 'ปานกลาง'
-                ? 'bg-amber-100 text-amber-800 border-amber-200'
-                : 'bg-rose-100 text-rose-800 border-rose-200';
-
             const isHighlighted = highlightedLessonId === lesson.id;
 
             return (
@@ -240,18 +232,6 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                       </span>
                       <span className="bg-sky-100 text-sky-800 text-xs font-bold px-2.5 py-1 rounded-xl border border-sky-200">
                         {lesson.unitName}
-                      </span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      {lesson.scoreWeight && (
-                        <span className="bg-rose-50 text-rose-700 border border-rose-200 font-bold text-xs px-2.5 py-1 rounded-xl flex items-center gap-1">
-                          <Award className="w-3.5 h-3.5 text-rose-500" />
-                          <span>{lesson.scoreWeight}</span>
-                        </span>
-                      )}
-                      <span className={`text-[11px] font-bold px-2 py-0.5 rounded-lg border ${difficultyBadge}`}>
-                        {lesson.difficulty}
                       </span>
                     </div>
                   </div>
