@@ -96,9 +96,9 @@ ${lesson.scoreWeight ? `[เกณฑ์คะแนน]: ${lesson.scoreWeight}\
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border-4 border-blue-200 overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl border-4 border-red-200 overflow-hidden flex flex-col max-h-[92vh]">
         {/* Modal Top Bar */}
-        <div className="bg-gradient-to-r from-blue-600 via-sky-600 to-amber-500 text-white p-4 sm:px-6 flex items-center justify-between">
+        <div className="bg-gradient-to-r from-red-700 via-rose-600 to-emerald-700 text-white p-4 sm:px-6 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
               <FileText className="w-6 h-6" />

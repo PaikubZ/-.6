@@ -9,6 +9,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { PdfViewerModal } from './components/PdfViewerModal';
 import { EyeCareTimerModal } from './components/EyeCareTimerModal';
+import { ChristmasSnowfall } from './components/ChristmasDecorations';
 
 export default function App() {
   const [currentTab, setCurrentTab] = useState<PageTab>('home');
@@ -28,7 +29,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-800 font-['Prompt',sans-serif]">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-sky-50/70 via-white to-red-50/30 text-slate-800 font-['Prompt',sans-serif] relative">
+      {/* Gentle Christmas Snowfall Overlay */}
+      <ChristmasSnowfall />
+
       {/* Navigation Bar */}
       <Navbar
         currentTab={currentTab}
@@ -37,7 +41,7 @@ export default function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
+      <main className="relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8">
         {currentTab === 'home' && (
           <HomeSection
             onNavigate={handleTabChange}

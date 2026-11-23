@@ -17,6 +17,7 @@ import {
   Smile
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { ChristmasLightsSvg } from './ChristmasDecorations';
 
 interface GamesSectionProps {
   onOpenTimer: () => void;
@@ -188,20 +189,25 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ onOpenTimer }) => {
   return (
     <div className="space-y-8 pb-16">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 rounded-3xl p-6 sm:p-8 text-white shadow-lg space-y-4">
-        <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-amber-100">
-          <Gamepad2 className="w-3.5 h-3.5" />
-          <span>ศูนย์รวมเกมเพื่อการเรียนรู้และผ่อนคลายสมอง</span>
+      <div className="relative overflow-hidden bg-gradient-to-r from-red-700 via-rose-600 to-emerald-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg space-y-4">
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <ChristmasLightsSvg />
         </div>
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
-          ห้องเกมคลายเครียด & เสริมทักษะโค้ดดิ้ง (Breakroom)
-        </h1>
-        <p className="text-amber-50 text-xs sm:text-sm max-w-2xl leading-relaxed">
-          รวมเกมสร้างสรรค์ ฝึกคิดแก้ปัญหาอย่างเป็นระบบ เช่น Scratch, Code.org, LightBot และ Google Interland พร้อมเล่นเกมเรียงบล็อกในเว็บได้ทันที!
-        </p>
+        <div className="relative z-10 pt-3 space-y-3">
+          <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-amber-100">
+            <Gamepad2 className="w-3.5 h-3.5" />
+            <span>🎄 ศูนย์รวมเกมเพื่อการเรียนรู้และผ่อนคลายสมอง</span>
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            ห้องเกมคลายเครียด &amp; เสริมทักษะโค้ดดิ้ง (Breakroom)
+          </h1>
+          <p className="text-rose-50 text-xs sm:text-sm max-w-2xl leading-relaxed">
+            รวมเกมสร้างสรรค์ ฝึกคิดแก้ปัญหาอย่างเป็นระบบ เช่น Scratch, Code.org, LightBot และ Google Interland พร้อมเล่นเกมเรียงบล็อกในเว็บได้ทันที!
+          </p>
+        </div>
 
         {/* Responsible Gaming Notice Banner */}
-        <div className="bg-amber-950/40 backdrop-blur-md rounded-2xl p-4 border border-amber-300/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm">
+        <div className="relative z-10 bg-emerald-950/45 backdrop-blur-md rounded-2xl p-4 border border-amber-300/40 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm">
           <div className="flex items-center gap-2.5">
             <ShieldAlert className="w-5 h-5 text-amber-300 shrink-0" />
             <div>
@@ -211,7 +217,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ onOpenTimer }) => {
           </div>
           <button
             onClick={onOpenTimer}
-            className="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold rounded-xl shadow-md transition active:scale-95 whitespace-nowrap self-end sm:self-auto text-xs"
+            className="px-4 py-2 bg-amber-400 hover:bg-amber-300 text-amber-950 font-bold rounded-xl shadow-md transition active:scale-95 whitespace-nowrap self-end sm:self-auto text-xs cursor-pointer"
           >
             ตั้งเวลาเตือนพักสายตา ⏱️
           </button>
@@ -219,10 +225,10 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ onOpenTimer }) => {
       </div>
 
       {/* Featured In-App Mini Game: Code Runner Bot */}
-      <section className="bg-white rounded-3xl border-3 border-blue-200 shadow-md p-6 sm:p-8 space-y-6">
+      <section className="bg-white rounded-3xl border-3 border-red-200 shadow-md p-6 sm:p-8 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center text-2xl shadow-md">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-emerald-600 text-white flex items-center justify-center text-2xl shadow-md">
               🤖
             </div>
             <div>
@@ -248,10 +254,10 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ onOpenTimer }) => {
                   setGameLevel(lvl);
                   resetGame(lvl);
                 }}
-                className={`w-8 h-8 rounded-xl font-bold text-xs transition ${
+                className={`w-8 h-8 rounded-xl font-bold text-xs transition cursor-pointer ${
                   gameLevel === lvl
-                    ? 'bg-blue-600 text-white shadow-md'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-red-600 text-white shadow-md'
+                    : 'bg-slate-100 text-slate-600 hover:bg-red-50'
                 }`}
               >
                 {lvl}
@@ -464,10 +470,10 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ onOpenTimer }) => {
               <button
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all ${
+                className={`px-3 py-1 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                   selectedCategory === cat.id
-                    ? 'bg-blue-600 text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-white'
+                    ? 'bg-red-600 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-red-700 hover:bg-white'
                 }`}
               >
                 {cat.label}
@@ -539,7 +545,7 @@ export const GamesSection: React.FC<GamesSectionProps> = ({ onOpenTimer }) => {
                       href={game.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="px-4 py-2 bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5 group-hover:shadow-md"
+                      className="px-4 py-2 bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-emerald-700 text-white font-bold text-xs rounded-xl shadow-xs transition flex items-center gap-1.5 group-hover:shadow-md"
                     >
                       <span>เปิดเล่น (Tab ใหม่)</span>
                       <ExternalLink className="w-3.5 h-3.5" />

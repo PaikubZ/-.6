@@ -17,6 +17,7 @@ import {
   Hash
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { ChristmasLightsSvg } from './ChristmasDecorations';
 
 export const ContactSection: React.FC = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -80,19 +81,22 @@ export const ContactSection: React.FC = () => {
   return (
     <div className="space-y-10 pb-16">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-blue-700 via-indigo-700 to-sky-600 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-r from-emerald-800 via-teal-800 to-red-700 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <ChristmasLightsSvg />
+        </div>
         <div className="absolute -right-12 -top-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-        <div className="relative z-10 space-y-3">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold text-sky-100 border border-white/20">
+        <div className="relative z-10 space-y-3 pt-3">
+          <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold text-amber-100 border border-white/20">
             <School className="w-3.5 h-3.5" />
-            <span>โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์ ศูนย์วิจัยและพัฒนาการศึกษา</span>
+            <span>🎄 โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์ ศูนย์วิจัยและพัฒนาการศึกษา</span>
           </div>
 
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
             ติดต่ออาจารย์ผู้สอน (Contact Us)
           </h1>
 
-          <p className="text-sky-100 text-xs sm:text-sm max-w-3xl leading-relaxed">
+          <p className="text-emerald-100 text-xs sm:text-sm max-w-3xl leading-relaxed">
             คณะอาจารย์ผู้รับผิดชอบรายวิชาเทคโนโลยี ชั้นประถมศึกษาปีที่ 6 พร้อมให้คำปรึกษา แนะนำการเรียน และตอบข้อสงสัยของนักเรียนทุกคน
           </p>
         </div>
@@ -205,7 +209,7 @@ export const ContactSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleSelectTeacherForInquiry(teacher.name)}
-                    className="w-full py-2 px-3 bg-sky-50 hover:bg-sky-600 hover:text-white text-sky-700 font-bold text-xs rounded-xl border border-sky-200 hover:border-transparent transition flex items-center justify-center gap-1.5 active:scale-95 shadow-xs"
+                    className="w-full py-2 px-3 bg-red-50 hover:bg-red-600 hover:text-white text-red-700 font-bold text-xs rounded-xl border border-red-200 hover:border-transparent transition flex items-center justify-center gap-1.5 active:scale-95 shadow-xs cursor-pointer"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
                     <span>สอบถามอาจารย์ {teacher.name.replace('อาจารย์', '')}</span>
@@ -218,11 +222,11 @@ export const ContactSection: React.FC = () => {
       </section>
 
       {/* Student Question Form */}
-      <section ref={formRef} className="bg-white rounded-3xl border-2 border-slate-200 shadow-md p-6 sm:p-8 space-y-6">
+      <section ref={formRef} className="bg-white rounded-3xl border-2 border-red-100 shadow-md p-6 sm:p-8 space-y-6">
         <div className="border-b border-slate-100 pb-4">
           <div className="inline-flex items-center gap-1.5 bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full mb-2">
             <Send className="w-3.5 h-3.5 text-amber-600" />
-            <span>แบบฟอร์มส่งข้อความ</span>
+            <span>🎄 แบบฟอร์มส่งข้อความ</span>
           </div>
           <h2 className="text-xl sm:text-2xl font-black text-slate-900">
             ส่งข้อความสอบถามอาจารย์ผู้สอน (Student Inquiry Form)
@@ -251,10 +255,10 @@ export const ContactSection: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setFormData({ ...formData, targetTeacher: 'อาจารย์ทุกท่าน' })}
-                className={`py-2 px-3 rounded-xl border text-xs font-bold transition text-center ${
+                className={`py-2 px-3 rounded-xl border text-xs font-bold transition text-center cursor-pointer ${
                   formData.targetTeacher === 'อาจารย์ทุกท่าน'
-                    ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
-                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                    ? 'bg-red-600 text-white border-red-600 shadow-sm'
+                    : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-red-50'
                 }`}
               >
                 👥 อาจารย์ทุกท่าน
@@ -264,10 +268,10 @@ export const ContactSection: React.FC = () => {
                   key={teacher.id}
                   type="button"
                   onClick={() => setFormData({ ...formData, targetTeacher: teacher.name })}
-                  className={`py-2 px-3 rounded-xl border text-xs font-bold transition text-center truncate ${
+                  className={`py-2 px-3 rounded-xl border text-xs font-bold transition text-center truncate cursor-pointer ${
                     formData.targetTeacher === teacher.name
-                      ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
-                      : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                      ? 'bg-red-600 text-white border-red-600 shadow-sm'
+                      : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-red-50'
                   }`}
                   title={teacher.name}
                 >
@@ -380,7 +384,7 @@ export const ContactSection: React.FC = () => {
           <div className="pt-2">
             <button
               type="submit"
-              className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white font-black rounded-xl shadow-md transition active:scale-95 flex items-center justify-center gap-2 text-sm"
+              className="w-full sm:w-auto px-8 py-3 bg-gradient-to-r from-red-600 via-rose-600 to-emerald-700 hover:from-red-700 hover:to-emerald-800 text-white font-black rounded-xl shadow-md transition active:scale-95 flex items-center justify-center gap-2 text-sm cursor-pointer"
             >
               <Send className="w-4 h-4" />
               <span>ส่งข้อความถึงอาจารย์ผู้สอน 🚀</span>

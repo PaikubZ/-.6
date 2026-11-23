@@ -43,22 +43,67 @@
   animation: pulse-gentle 2.5s ease-in-out infinite;
 }
 
-/* Smooth custom scrollbars */
+@keyframes christmas-snowfall {
+  0% {
+    transform: translate3d(0, -24px, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(18px, 50vh, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate3d(-14px, 105vh, 0) rotate(360deg);
+  }
+}
+
+@keyframes christmas-twinkle {
+  0%, 100% {
+    opacity: 0.95;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scale(0.92);
+  }
+}
+
+.christmas-snowflake {
+  animation-name: christmas-snowfall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+.christmas-twinkle {
+  animation: christmas-twinkle 1.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .christmas-snowflake,
+  .christmas-twinkle,
+  .animate-float,
+  .animate-float-delayed,
+  .animate-pulse-gentle {
+    animation: none !important;
+  }
+}
+
+/* Smooth custom festive scrollbars */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #fef2f2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #93c5fd;
+  background: #ef4444;
   border-radius: 9999px;
-  border: 2px solid #f1f5f9;
+  border: 2px solid #fef2f2;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3b82f6;
+  background: #15803d;
 }

@@ -22,6 +22,11 @@ import {
   ExternalLink,
   Laptop
 } from 'lucide-react';
+import {
+  ChristmasLightsSvg,
+  ChristmasTreeCornerSvg,
+  SantaHatSvg
+} from './ChristmasDecorations';
 
 interface HomeSectionProps {
   onNavigate: (tab: PageTab) => void;
@@ -63,18 +68,28 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
 
   return (
     <div className="space-y-10 sm:space-y-12 pb-16">
-      {/* Hero Banner - กิจกรรมประจำสัปดาห์ ภาคปลาย */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-sky-600 to-amber-500 text-white shadow-xl p-6 sm:p-10 lg:p-12">
-        {/* Decorative background shapes */}
-        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-        <div className="absolute bottom-0 left-1/3 -mb-20 w-72 h-72 bg-amber-400/20 rounded-full blur-2xl pointer-events-none"></div>
+      {/* Hero Banner - กิจกรรมประจำสัปดาห์ ภาคปลาย (Christmas Edition) */}
+      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-red-700 via-rose-700 to-emerald-800 text-white shadow-xl p-6 sm:p-10 lg:p-12 border-2 border-red-900/30">
+        {/* Top Hanging Christmas Fairy Lights */}
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <ChristmasLightsSvg />
+        </div>
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Decorative snowy glow shapes */}
+        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-80 h-80 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div className="absolute bottom-0 left-1/3 -mb-20 w-72 h-72 bg-amber-300/15 rounded-full blur-2xl pointer-events-none"></div>
+
+        {/* Bottom-Right Decorative Christmas Tree */}
+        <div className="hidden lg:block absolute bottom-0 right-3 z-10 opacity-95 pointer-events-none">
+          <ChristmasTreeCornerSvg />
+        </div>
+
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
           {/* Hero Left Content */}
           <div className="lg:col-span-8 space-y-4 text-left">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/30 text-xs sm:text-sm font-bold text-amber-200">
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-md px-3.5 py-1 rounded-full border border-white/30 text-xs sm:text-sm font-bold text-amber-200">
               <Sparkles className="w-4 h-4 text-amber-300" />
-              <span>กิจกรรมประจำสัปดาห์ ภาคปลาย</span>
+              <span>🎄 กิจกรรมประจำสัปดาห์ ภาคปลาย</span>
             </div>
 
             <div>
@@ -82,7 +97,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                 กิจกรรมประจำสัปดาห์ ภาคปลาย
               </h1>
               <div className="inline-block mt-2 px-3.5 py-1 bg-amber-400 text-amber-950 font-bold rounded-xl text-sm sm:text-base shadow-sm">
-                📅 สัปดาห์ที่ 2 (9 - 13 พฤศจิกายน 2569)
+                ❄️ สัปดาห์ที่ 2 (9 - 13 พฤศจิกายน 2569)
               </div>
             </div>
 
@@ -145,7 +160,8 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
           {/* Hero Right Cheerful Mascot */}
           <div className="lg:col-span-4 flex justify-center">
             <div className="relative w-full max-w-xs">
-              <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-5 border-2 border-white/30 shadow-2xl animate-float text-center flex flex-col items-center">
+              <div className="relative bg-white/15 backdrop-blur-md rounded-3xl p-5 border-2 border-amber-300/60 shadow-2xl animate-float text-center flex flex-col items-center">
+                <SantaHatSvg className="w-12 h-12 absolute -top-5 -right-3 rotate-12 pointer-events-none drop-shadow-md" />
                 <div className="w-32 h-32 mx-auto drop-shadow-xl mb-2 flex items-center justify-center">
                   <img
                     src="/assets/aistudio/20_bf556e21.png"
@@ -154,12 +170,12 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   />
                 </div>
                 <div className="inline-block bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full mb-2 uppercase tracking-wider shadow-sm">
-                  สัปดาห์ที่ 2 ภาคปลาย
+                  🎅 สัปดาห์ที่ 2 ภาคปลาย
                 </div>
                 <h3 className="text-lg font-bold text-white mb-1">
                   "ลุยออกแบบผังงานดิจิทัล!"
                 </h3>
-                <p className="text-xs text-sky-100">
+                <p className="text-xs text-amber-100">
                   ฝึกสร้าง Flowchart ด้วย Diagrams.net และเตรียมพร้อมสอบ Bebras 2026 🚀
                 </p>
               </div>
@@ -184,18 +200,18 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
           {/* Card 1: Lessons */}
           <div
             onClick={() => onNavigate('lessons')}
-            className="group relative bg-white p-5 rounded-3xl border-2 border-blue-100 hover:border-blue-400 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1"
+            className="group relative bg-white p-5 rounded-3xl border-2 border-red-100 hover:border-red-400 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1"
           >
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-500 to-sky-400 flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-red-600 to-rose-500 flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
               <BookOpen className="w-6 h-6" />
             </div>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">
-                8 สัปดาห์
+              <span className="text-xs font-bold text-red-700 bg-red-50 px-2.5 py-0.5 rounded-full">
+                คลังบทเรียน
               </span>
-              <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition" />
+              <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-red-600 group-hover:translate-x-1 transition" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition">
+            <h3 className="text-lg font-bold text-slate-900 group-hover:text-red-700 transition">
               คลังบทเรียน ป.6
             </h3>
             <p className="text-xs text-slate-500 mt-1 leading-relaxed">
@@ -212,8 +228,8 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
               <Gamepad2 className="w-6 h-6" />
             </div>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full">
-                สนุก & ตรรกะ
+              <span className="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full">
+                สนุก &amp; ตรรกะ
               </span>
               <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 group-hover:translate-x-1 transition" />
             </div>
@@ -228,18 +244,18 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
           {/* Card 3: Student Gallery */}
           <div
             onClick={() => onNavigate('gallery')}
-            className="group relative bg-white p-5 rounded-3xl border-2 border-indigo-100 hover:border-indigo-400 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1"
+            className="group relative bg-white p-5 rounded-3xl border-2 border-emerald-100 hover:border-emerald-500 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1"
           >
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-600 to-green-500 flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
               <Palette className="w-6 h-6" />
             </div>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full">
+              <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full">
                 ฝีมือเพื่อน ป.6
               </span>
-              <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition" />
+              <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition">
+            <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition">
               โชว์ผลงานนักเรียน
             </h3>
             <p className="text-xs text-slate-500 mt-1 leading-relaxed">
@@ -250,16 +266,16 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
           {/* Card 4: Contact */}
           <div
             onClick={() => onNavigate('contact')}
-            className="group relative bg-white p-5 rounded-3xl border-2 border-emerald-100 hover:border-emerald-400 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1"
+            className="group relative bg-white p-5 rounded-3xl border-2 border-rose-100 hover:border-rose-400 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1"
           >
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-700 to-red-600 flex items-center justify-center text-white mb-4 shadow-md group-hover:scale-110 transition-transform">
               <MessageSquare className="w-6 h-6" />
             </div>
             <div className="flex items-center justify-between mb-1">
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-emerald-600 transition">
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-rose-700 transition">
                 ติดต่ออาจารย์
               </h3>
-              <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 group-hover:translate-x-1 transition" />
+              <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-rose-600 group-hover:translate-x-1 transition" />
             </div>
           </div>
         </div>
@@ -307,9 +323,9 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
 
         {/* Announcement Cards List */}
         {filteredAnnouncements.length === 0 ? (
-          <div className="py-10 px-6 sm:px-10 bg-gradient-to-b from-sky-50/60 via-white to-slate-50/70 rounded-3xl border-2 border-dashed border-sky-200 text-center space-y-3.5 shadow-2xs">
-            <div className="w-16 h-16 mx-auto rounded-3xl bg-sky-100 text-sky-600 flex items-center justify-center text-3xl shadow-sm border border-sky-200">
-              📬
+          <div className="py-10 px-6 sm:px-10 bg-gradient-to-b from-red-50/50 via-white to-emerald-50/50 rounded-3xl border-2 border-dashed border-red-200 text-center space-y-3.5 shadow-2xs">
+            <div className="w-16 h-16 mx-auto rounded-3xl bg-red-100 text-red-600 flex items-center justify-center text-3xl shadow-sm border border-red-200">
+              🎁
             </div>
             <div className="space-y-1">
               <h3 className="text-base sm:text-lg font-black text-slate-800">
@@ -320,8 +336,8 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
               </p>
             </div>
             <div className="pt-2 flex flex-wrap items-center justify-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-sky-100/80 text-sky-800 rounded-full text-xs font-bold border border-sky-200/60">
-                ✨ นักเรียนสามารถติดตามภารกิจประจำสัปดาห์ได้จากป้ายด้านบนครับ
+              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-emerald-100/80 text-emerald-800 rounded-full text-xs font-bold border border-emerald-200/70">
+                🎄 นักเรียนสามารถติดตามภารกิจประจำสัปดาห์ได้จากป้ายด้านบนครับ
               </span>
               <button
                 onClick={() =>
@@ -329,7 +345,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                     ? onOpenLessonDetails('lesson-term2-2')
                     : onNavigate('lessons')
                 }
-                className="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 active:scale-95 text-white text-xs font-bold rounded-full shadow-xs transition flex items-center gap-1.5"
+                className="px-4 py-1.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold rounded-full shadow-xs transition flex items-center gap-1.5 cursor-pointer"
               >
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>ดูบทเรียนสัปดาห์นี้</span>

@@ -153,7 +153,7 @@ export const EyeCareTimerModal: React.FC<EyeCareTimerModalProps> = ({ isOpen, on
         <div className="mt-5 flex justify-end">
           <button
             onClick={onClose}
-            className="w-full sm:w-auto px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-md transition-all text-sm"
+            className="w-full sm:w-auto px-6 py-2.5 bg-gradient-to-r from-red-600 to-emerald-700 hover:from-red-700 hover:to-emerald-800 text-white font-bold rounded-xl shadow-md transition-all text-sm cursor-pointer"
           >
             เข้าใจแล้ว เริ่มจับเวลาเลย! 🚀
           </button>

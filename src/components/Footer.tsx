@@ -9,21 +9,24 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer className="bg-slate-900 text-slate-300 border-t-4 border-amber-400 py-10">
+    <footer className="relative z-10 bg-gradient-to-b from-emerald-950 to-slate-950 text-emerald-100 border-t-4 border-red-600 py-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Col 1: About the course */}
           <div className="space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-blue-500 to-amber-400 flex items-center justify-center text-white shadow-md">
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-red-600 to-amber-400 flex items-center justify-center text-white shadow-md">
                 <Laptop className="w-6 h-6" />
               </div>
               <span className="font-extrabold text-white text-base">
                 วิชาเทคโนโลยี
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-emerald-200/80 leading-relaxed">
               โรงเรียนสาธิตแห่งมหาวิทยาลัยเกษตรศาสตร์ ศูนย์วิจัยและพัฒนาการศึกษา
+            </p>
+            <p className="text-xs text-amber-300 font-semibold">
+              🎄 สุขสันต์เทศกาลคริสต์มาสและปีใหม่ · ชั้น ป.6
             </p>
           </div>
 

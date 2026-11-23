@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   ExternalLink
 } from 'lucide-react';
+import { ChristmasLightsSvg } from './ChristmasDecorations';
 
 interface LessonsSectionProps {
   onOpenPdf: (lesson: Lesson) => void;
@@ -102,22 +103,25 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
   return (
     <div className="space-y-8 pb-16">
       {/* Section Header */}
-      <div className="bg-gradient-to-r from-blue-700 via-sky-600 to-indigo-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg space-y-5">
-        <div>
-          <div className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-amber-200 mb-2">
+      <div className="relative overflow-hidden bg-gradient-to-r from-emerald-800 via-teal-800 to-red-700 rounded-3xl p-6 sm:p-8 text-white shadow-lg space-y-5">
+        <div className="absolute top-0 left-0 right-0 z-10">
+          <ChristmasLightsSvg />
+        </div>
+        <div className="relative z-10 pt-3">
+          <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-amber-200 mb-2">
             <BookOpen className="w-3.5 h-3.5" />
-            <span>หลักสูตรรายวิชาเทคโนโลยี (แยกภาคต้น - ภาคปลาย)</span>
+            <span>🎄 หลักสูตรรายวิชาเทคโนโลยี (แยกภาคต้น - ภาคปลาย)</span>
           </div>
           <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
             คลังบทเรียนและเนื้อหากิจกรรมประจำสัปดาห์
           </h1>
-          <p className="text-sky-100 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
+          <p className="text-emerald-100 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
             เลือกดูเนื้อหาตามภาคเรียน ติดตามหัวข้อการเรียนรู้ในแต่ละสัปดาห์ พร้อมเอกสารและใบงานประกอบการเรียน
           </p>
         </div>
 
         {/* Search Bar */}
-        <div className="bg-white p-2.5 rounded-2xl shadow-md text-slate-800">
+        <div className="relative z-10 bg-white p-2.5 rounded-2xl shadow-md text-slate-800">
           <div className="relative">
             <Search className="w-5 h-5 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
@@ -125,14 +129,14 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
               placeholder="ค้นหาบทเรียน เช่น 'แก้ปัญหา', 'ผังงาน', 'Flowchart', 'Pseudocode', 'Canva'..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-blue-500 bg-slate-50 focus:bg-white transition"
+              className="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-none focus:border-red-500 bg-slate-50 focus:bg-white transition"
             />
           </div>
         </div>
       </div>
 
       {/* Semester Switcher Tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-3.5 rounded-3xl border-2 border-slate-200 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-3.5 rounded-3xl border-2 border-red-100 shadow-sm">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-wider px-2 shrink-0">
             ภาคเรียน:
@@ -140,23 +144,23 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
           <div className="inline-flex p-1 bg-slate-100 rounded-2xl border border-slate-200 w-full sm:w-auto">
             <button
               onClick={() => { setSelectedSemester(2); setSelectedUnit('all'); }}
-              className={`flex-1 sm:flex-initial px-5 py-2 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-2 ${
+              className={`flex-1 sm:flex-initial px-5 py-2 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 selectedSemester === 2
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'text-slate-600 hover:text-blue-600'
+                  ? 'bg-red-600 text-white shadow-md'
+                  : 'text-slate-600 hover:text-red-700'
               }`}
             >
-              <span>🌸 ภาคปลาย (ปี 2569)</span>
+              <span>🎄 ภาคปลาย (ปี 2569)</span>
               <span className="bg-amber-400 text-amber-950 text-[10px] font-bold px-2 py-0.5 rounded-full">
                 กำลังเรียน
               </span>
             </button>
             <button
               onClick={() => { setSelectedSemester(1); setSelectedUnit('all'); }}
-              className={`flex-1 sm:flex-initial px-5 py-2 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-2 ${
+              className={`flex-1 sm:flex-initial px-5 py-2 rounded-xl text-xs sm:text-sm font-black transition-all flex items-center justify-center gap-2 cursor-pointer ${
                 selectedSemester === 1
-                  ? 'bg-blue-600 text-white shadow-md'
-                  : 'text-slate-600 hover:text-blue-600'
+                  ? 'bg-emerald-700 text-white shadow-md'
+                  : 'text-slate-600 hover:text-emerald-700'
               }`}
             >
               <span>🌱 ภาคต้น (คลังย้อนหลัง)</span>
@@ -165,7 +169,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
         </div>
 
         <div className="text-xs font-bold text-slate-500 px-2 sm:px-0">
-          แสดงบทเรียน <span className="text-blue-600 font-extrabold">{selectedSemester === 2 ? 'ภาคปลาย' : 'ภาคต้น'}</span> ({filteredLessons.length} รายการ)
+          แสดงบทเรียน <span className="text-red-700 font-extrabold">{selectedSemester === 2 ? 'ภาคปลาย' : 'ภาคต้น'}</span> ({filteredLessons.length} รายการ)
         </div>
       </div>
 
@@ -175,10 +179,10 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
           <button
             key={u.number}
             onClick={() => setSelectedUnit(u.number as any)}
-            className={`whitespace-nowrap px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${
+            className={`whitespace-nowrap px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 cursor-pointer ${
               selectedUnit === u.number
-                ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
-                : 'bg-white text-slate-600 border border-slate-200 hover:bg-sky-50 hover:text-blue-600'
+                ? 'bg-emerald-700 text-white shadow-md shadow-emerald-200'
+                : 'bg-white text-slate-600 border border-slate-200 hover:bg-red-50 hover:text-red-700'
             }`}
           >
             {u.title}
@@ -188,7 +192,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
 
       {/* Lesson Cards List */}
       {filteredLessons.length === 0 ? (
-        <div className="bg-white rounded-3xl p-12 text-center border-2 border-dashed border-slate-300 space-y-3">
+        <div className="bg-white rounded-3xl p-12 text-center border-2 border-dashed border-red-200 space-y-3">
           <div className="text-4xl">🔍</div>
           <h3 className="text-lg font-bold text-slate-800">ไม่พบบทเรียนที่ค้นหา</h3>
           <p className="text-xs text-slate-500">ลองเปลี่ยนคำค้นหา หรือกดเลือก "ทั้งหมด" เพื่อดูบทเรียนที่มี</p>
@@ -197,7 +201,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
               setSearchQuery('');
               setSelectedUnit('all');
             }}
-            className="mt-2 px-4 py-2 bg-blue-600 text-white text-xs font-bold rounded-xl"
+            className="mt-2 px-4 py-2 bg-red-600 text-white text-xs font-bold rounded-xl cursor-pointer"
           >
             ล้างตัวกรองทั้งหมด
           </button>
@@ -213,8 +217,8 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                 id={lesson.id}
                 className={`scroll-mt-24 bg-white rounded-3xl border-2 transition-all duration-300 overflow-hidden ${
                   isHighlighted
-                    ? 'border-blue-500 ring-4 ring-amber-300 shadow-xl'
-                    : 'border-slate-200 hover:border-blue-400 shadow-sm hover:shadow-xl'
+                    ? 'border-red-600 ring-4 ring-amber-300 shadow-xl'
+                    : 'border-red-100 hover:border-red-400 shadow-sm hover:shadow-xl'
                 }`}
               >
                 {/* Lesson Header Banner */}
@@ -222,7 +226,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex flex-wrap items-center gap-2">
                       <span className={`font-black text-xs sm:text-sm px-3.5 py-1.5 rounded-xl shadow-xs ${
-                        lesson.semester === 2 ? 'bg-indigo-600 text-white' : 'bg-slate-700 text-white'
+                        lesson.semester === 2 ? 'bg-red-600 text-white' : 'bg-emerald-800 text-white'
                       }`}>
                         {lesson.termLabel || (lesson.semester === 2 ? 'ภาคปลาย' : 'ภาคต้น')} • สัปดาห์ที่ {lesson.week}
                       </span>
@@ -230,7 +234,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                         <Calendar className="w-3.5 h-3.5 text-amber-700" />
                         <span>{lesson.dateRange}</span>
                       </span>
-                      <span className="bg-sky-100 text-sky-800 text-xs font-bold px-2.5 py-1 rounded-xl border border-sky-200">
+                      <span className="bg-emerald-50 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-xl border border-emerald-200">
                         {lesson.unitName}
                       </span>
                     </div>
@@ -240,7 +244,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                     <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
                       {lesson.title}
                     </h2>
-                    <p className="text-xs sm:text-sm font-semibold text-blue-600 mt-0.5">
+                    <p className="text-xs sm:text-sm font-semibold text-red-700 mt-0.5">
                       {lesson.subtitle}
                     </p>
                     <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mt-2 max-w-4xl">
@@ -250,9 +254,9 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                 </div>
 
                 {/* Lesson Tasks (Numbered Activities) */}
-                <div className="p-5 sm:p-7 bg-slate-50/70 border-b border-slate-100 space-y-3">
+                <div className="p-5 sm:p-7 bg-red-50/35 border-b border-slate-100 space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-extrabold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
+                    <span className="text-xs font-extrabold text-red-900 uppercase tracking-wider flex items-center gap-1.5">
                       <Sparkles className="w-4 h-4 text-amber-500" />
                       <span>เนื้อหากิจกรรมประจำสัปดาห์ ({lesson.tasks.length} รายการ):</span>
                     </span>
@@ -262,9 +266,9 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                     {lesson.tasks.map((task, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 bg-white p-3 sm:p-3.5 rounded-2xl border border-slate-200/90 shadow-2xs hover:border-blue-300 transition"
+                        className="flex items-start gap-3 bg-white p-3 sm:p-3.5 rounded-2xl border border-red-100/90 shadow-2xs hover:border-emerald-400 transition"
                       >
-                        <span className="w-6 h-6 rounded-xl bg-blue-600 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+                        <span className="w-6 h-6 rounded-xl bg-emerald-700 text-white font-black text-xs flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
                           {idx + 1}
                         </span>
                         <p className="text-xs sm:text-sm font-medium text-slate-800 leading-relaxed">
@@ -309,7 +313,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                         href={lesson.downloadUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-98"
+                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-red-600 via-rose-600 to-emerald-700 hover:from-red-700 hover:to-emerald-800 text-white rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-98"
                       >
                         <div className="flex items-center gap-3 text-left">
                           <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
@@ -320,7 +324,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                               <span>ดาวน์โหลดบทเรียนสัปดาห์ที่ {lesson.week}</span>
                               <ExternalLink className="w-3.5 h-3.5 text-amber-200" />
                             </div>
-                            <div className="text-[11px] text-sky-100">
+                            <div className="text-[11px] text-rose-100">
                               {lesson.downloadUrl.includes('canva')
                                 ? 'คลิกเพื่อเปิดสื่อบทเรียนบน Canva'
                                 : 'คลิกเพื่อเปิดและดาวน์โหลดไฟล์บน Google Drive'}
@@ -332,7 +336,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                     ) : (
                       <button
                         onClick={() => onOpenPdf(lesson)}
-                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-98"
+                        className="group w-full flex items-center justify-between p-4 bg-gradient-to-r from-red-600 via-rose-600 to-emerald-700 hover:from-red-700 hover:to-emerald-800 text-white rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-98 cursor-pointer"
                       >
                         <div className="flex items-center gap-3 text-left">
                           <div className="w-11 h-11 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shrink-0">
@@ -343,7 +347,7 @@ export const LessonsSection: React.FC<LessonsSectionProps> = ({
                               <span>ดาวน์โหลดบทเรียนสัปดาห์ที่ {lesson.week}</span>
                               <Download className="w-3.5 h-3.5 text-amber-200" />
                             </div>
-                            <div className="text-[11px] text-sky-100">
+                            <div className="text-[11px] text-rose-100">
                               คลิกเพื่อเปิดและดาวน์โหลดเอกสาร PDF
                             </div>
                           </div>

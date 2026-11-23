@@ -12,6 +12,7 @@ import {
   Sparkles,
   Laptop
 } from 'lucide-react';
+import { SantaHatSvg } from './ChristmasDecorations';
 
 interface NavbarProps {
   currentTab: PageTab;
@@ -49,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       label: 'โชว์ผลงานนักเรียน',
       icon: Palette,
       badge: 'ป.6',
-      badgeColor: 'bg-indigo-500 text-white'
+      badgeColor: 'bg-emerald-600 text-white'
     },
     {
       tab: 'contact',
@@ -65,11 +66,11 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-sky-100 shadow-sm transition-all">
-      {/* Top Banner Ribbon */}
-      <div className="bg-gradient-to-r from-blue-600 via-sky-500 to-amber-500 text-white text-xs py-1.5 px-4 font-medium flex items-center justify-center text-center">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-2 border-red-200 shadow-sm transition-all">
+      {/* Top Festive Christmas Ribbon */}
+      <div className="bg-gradient-to-r from-red-700 via-emerald-700 to-red-700 text-white text-xs py-1.5 px-4 font-bold flex items-center justify-center text-center">
         <span className="inline truncate">
-          🌟 วิชาเทคโนโลยี ชั้นประถมศึกษาปีที่ 6
+          🎄 Merry Christmas! วิชาเทคโนโลยี ชั้นประถมศึกษาปีที่ 6 ❄️
         </span>
       </div>
 
@@ -81,7 +82,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-3 cursor-pointer group select-none"
           >
             <div className="relative">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-blue-500 via-sky-500 to-amber-400 flex items-center justify-center text-white shadow-md shadow-sky-200 group-hover:scale-105 transition-transform duration-200">
+              <SantaHatSvg className="w-7 h-7 absolute -top-3.5 -left-2 -rotate-12 z-10 pointer-events-none drop-shadow-sm" />
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-br from-red-600 via-rose-600 to-emerald-700 flex items-center justify-center text-white shadow-md shadow-red-200 group-hover:scale-105 transition-transform duration-200">
                 <Laptop className="w-7 h-7 sm:w-8 sm:h-8" />
               </div>
               <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
@@ -94,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-extrabold text-lg sm:text-xl text-blue-900 tracking-tight group-hover:text-blue-700 transition">
+                <span className="font-extrabold text-lg sm:text-xl text-red-800 tracking-tight group-hover:text-emerald-700 transition">
                   วิชาเทคโนโลยี
                 </span>
               </div>
@@ -113,13 +115,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <button
                   key={item.tab}
                   onClick={() => handleSelectTab(item.tab)}
-                  className={`relative flex items-center gap-2 px-3.5 py-2.5 rounded-2xl font-bold text-sm transition-all duration-200 ${
+                  className={`relative flex items-center gap-2 px-3.5 py-2.5 rounded-2xl font-bold text-sm transition-all duration-200 whitespace-nowrap shrink-0 cursor-pointer ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-md shadow-blue-200 scale-102'
-                      : 'text-slate-600 hover:text-blue-600 hover:bg-sky-50'
+                      ? 'bg-red-600 text-white shadow-md shadow-red-200 scale-102'
+                      : 'text-slate-700 hover:text-red-700 hover:bg-red-50'
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? 'text-amber-300' : 'text-slate-500 group-hover:text-blue-500'}`} />
+                  <Icon className={`w-4 h-4 ${isActive ? 'text-amber-300' : 'text-emerald-700 group-hover:text-red-600'}`} />
                   <span>{item.label}</span>
                   {item.badge && (
                     <span
@@ -139,7 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2.5 rounded-xl bg-sky-50 border border-sky-200 text-blue-700 hover:bg-sky-100 transition"
+              className="p-2.5 rounded-xl bg-red-50 border border-red-200 text-red-700 hover:bg-red-100 transition"
               aria-label="เปิดเมนูนำทาง"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -150,9 +152,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b-2 border-sky-200 px-4 pt-3 pb-6 space-y-2 shadow-xl animate-fade-in">
-          <div className="text-xs font-bold text-slate-400 px-2 uppercase tracking-wider mb-1">
-            เมนูวิชาเทคโนโลยี ป.6
+        <div className="lg:hidden bg-white border-b-2 border-red-200 px-4 pt-3 pb-6 space-y-2 shadow-xl animate-fade-in">
+          <div className="text-xs font-bold text-emerald-700 px-2 uppercase tracking-wider mb-1">
+            🎄 เมนูวิชาเทคโนโลยี ป.6
           </div>
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -163,14 +165,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 onClick={() => handleSelectTab(item.tab)}
                 className={`w-full flex items-center justify-between p-3 rounded-2xl font-bold text-base transition-all ${
                   isActive
-                    ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
-                    : 'text-slate-700 hover:bg-sky-50 hover:text-blue-600'
+                    ? 'bg-red-600 text-white shadow-md shadow-red-200'
+                    : 'text-slate-700 hover:bg-red-50 hover:text-red-700'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <div
                     className={`w-9 h-9 rounded-xl flex items-center justify-center ${
-                      isActive ? 'bg-blue-500 text-amber-300' : 'bg-sky-100 text-sky-700'
+                      isActive ? 'bg-red-500 text-amber-300' : 'bg-emerald-50 text-emerald-700'
                     }`}
                   >
                     <Icon className="w-5 h-5" />

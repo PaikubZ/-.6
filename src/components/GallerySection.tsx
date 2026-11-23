@@ -24,6 +24,11 @@ import {
   Star
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import {
+  ChristmasLightsSvg,
+  ChristmasTreeCornerSvg,
+  SantaHatSvg
+} from './ChristmasDecorations';
 
 const EMOJI_OPTIONS = [
   { emoji: '❤️', label: 'ชอบมาก', defaultCount: 18 },
@@ -62,24 +67,24 @@ const BuntingFlagsSvg: React.FC = () => (
   >
     <path d="M0,4 Q300,32 600,10 Q900,32 1200,4" stroke="#1e293b" strokeWidth="3" fill="none" />
     {[
-      { x: 35, y: 9, color: '#F43F5E', rot: 6 },
-      { x: 95, y: 15, color: '#FBBF24', rot: 4 },
-      { x: 155, y: 19, color: '#34D399', rot: 2 },
-      { x: 215, y: 21, color: '#60A5FA', rot: 0 },
-      { x: 275, y: 22, color: '#A78BFA', rot: -2 },
-      { x: 335, y: 20, color: '#FB923C', rot: -4 },
-      { x: 395, y: 17, color: '#F43F5E', rot: -4 },
-      { x: 455, y: 14, color: '#FBBF24', rot: -2 },
-      { x: 515, y: 12, color: '#34D399', rot: 0 },
-      { x: 645, y: 12, color: '#60A5FA', rot: 2 },
-      { x: 705, y: 16, color: '#A78BFA', rot: 4 },
-      { x: 765, y: 20, color: '#FB923C', rot: 2 },
-      { x: 825, y: 22, color: '#F43F5E', rot: 0 },
-      { x: 885, y: 21, color: '#FBBF24', rot: -2 },
-      { x: 945, y: 19, color: '#34D399', rot: -3 },
-      { x: 1005, y: 15, color: '#60A5FA', rot: -4 },
-      { x: 1065, y: 11, color: '#A78BFA', rot: -5 },
-      { x: 1125, y: 7, color: '#FB923C', rot: -6 }
+      { x: 35, y: 9, color: '#DC2626', rot: 6 },
+      { x: 95, y: 15, color: '#16A34A', rot: 4 },
+      { x: 155, y: 19, color: '#FBBF24', rot: 2 },
+      { x: 215, y: 21, color: '#DC2626', rot: 0 },
+      { x: 275, y: 22, color: '#16A34A', rot: -2 },
+      { x: 335, y: 20, color: '#FBBF24', rot: -4 },
+      { x: 395, y: 17, color: '#DC2626', rot: -4 },
+      { x: 455, y: 14, color: '#16A34A', rot: -2 },
+      { x: 515, y: 12, color: '#FBBF24', rot: 0 },
+      { x: 645, y: 12, color: '#DC2626', rot: 2 },
+      { x: 705, y: 16, color: '#16A34A', rot: 4 },
+      { x: 765, y: 20, color: '#FBBF24', rot: 2 },
+      { x: 825, y: 22, color: '#DC2626', rot: 0 },
+      { x: 885, y: 21, color: '#16A34A', rot: -2 },
+      { x: 945, y: 19, color: '#FBBF24', rot: -3 },
+      { x: 1005, y: 15, color: '#DC2626', rot: -4 },
+      { x: 1065, y: 11, color: '#16A34A', rot: -5 },
+      { x: 1125, y: 7, color: '#FBBF24', rot: -6 }
     ].map((flag, idx) => (
       <polygon
         key={idx}
@@ -470,28 +475,32 @@ export const GallerySection: React.FC = () => {
     return (
       <div className="space-y-8 pb-20">
         {/* Project Selection Header Banner */}
-        <div className="relative overflow-hidden bg-gradient-to-br from-indigo-950 via-purple-900 to-indigo-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl border border-indigo-700/50">
-          <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-purple-500/10 blur-3xl pointer-events-none" />
-          <div className="absolute right-1/3 -bottom-20 w-72 h-72 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+        <div className="relative overflow-hidden bg-gradient-to-br from-red-800 via-rose-800 to-emerald-900 rounded-3xl p-6 sm:p-10 text-white shadow-xl border border-red-700/50">
+          <div className="absolute top-0 left-0 right-0 z-10">
+            <ChristmasLightsSvg />
+          </div>
+          <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-amber-400/10 blur-3xl pointer-events-none" />
+          <div className="absolute right-1/3 -bottom-20 w-72 h-72 rounded-full bg-emerald-400/10 blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6 pt-3">
             <div className="space-y-3 max-w-3xl">
               <div className="flex items-center gap-2 text-xs font-bold text-amber-300">
                 <FolderOpen className="w-4 h-4 shrink-0" />
-                <span>คลังโชว์ผลงานนักเรียน</span>
+                <span>🎄 คลังโชว์ผลงานนักเรียน</span>
                 <span aria-hidden="true">·</span>
-                <span className="text-purple-200">ชั้นประถมศึกษาปีที่ 6</span>
+                <span className="text-rose-100">ชั้นประถมศึกษาปีที่ 6</span>
               </div>
 
               <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
                 เลือกงานที่ต้องการเข้าชมผลงาน
               </h1>
-              <p className="text-sm sm:text-base text-purple-200 font-medium max-w-2xl leading-relaxed">
+              <p className="text-sm sm:text-base text-rose-100 font-medium max-w-2xl leading-relaxed">
                 รวบรวมผลงานสร้างสรรค์และรางวัลยอดเยี่ยมของนักเรียน ชั้น ป.6 ในแต่ละกิจกรรมและรายวิชา สามารถเลือกหัวข้องานด้านล่างเพื่อเข้าชมรายละเอียดและส่งกำลังใจให้เพื่อนๆ ได้เลยครับ
               </p>
             </div>
 
-            <div className="hidden lg:flex items-end gap-2 shrink-0 self-end -mb-6 sm:-mb-10 mr-2 select-none pointer-events-none">
+            <div className="hidden lg:flex items-end gap-2 shrink-0 self-end -mb-6 sm:-mb-10 mr-2 select-none pointer-events-none relative">
+              <SantaHatSvg className="w-11 h-11 absolute -top-5 right-8 rotate-12 z-20 drop-shadow-md" />
               <div className="relative">
                 <img
                   src="/assets/aistudio/24_feafe487.png"
@@ -605,7 +614,7 @@ export const GallerySection: React.FC = () => {
                         e.stopPropagation();
                         handleSelectProject(project.id);
                       }}
-                      className="w-full py-3 px-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white rounded-2xl text-sm font-bold flex items-center justify-center gap-2 shadow-sm transition active:scale-98 cursor-pointer"
+                      className="w-full py-3 px-4 bg-gradient-to-r from-red-600 to-emerald-700 hover:from-red-700 hover:to-emerald-800 text-white rounded-2xl text-sm font-bold flex items-center justify-center gap-2 shadow-sm transition active:scale-98 cursor-pointer"
                     >
                       <span>เข้าชมผลงาน ({countInProject} รางวัล)</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -673,32 +682,32 @@ export const GallerySection: React.FC = () => {
       </div>
 
       {/* ========================================================= */}
-      {/* 1. GAMIFIED SKY HERO BANNER (ท้องฟ้าสดใส & งานเฉลิมฉลอง) */}
+      {/* 1. GAMIFIED WINTER CHRISTMAS HERO BANNER                  */}
       {/* ========================================================= */}
-      <section className="relative overflow-hidden rounded-3xl border-2 border-slate-800 bg-gradient-to-b from-sky-400 via-sky-300 to-cyan-100 shadow-[0_6px_0_#1e293b]">
+      <section className="relative overflow-hidden rounded-3xl border-2 border-slate-800 bg-gradient-to-b from-sky-200 via-cyan-100 to-red-50 shadow-[0_6px_0_#1e293b]">
         {/* Top Bunting Flags */}
         <div className="absolute top-0 left-0 right-0 z-10">
           <BuntingFlagsSvg />
         </div>
 
-        {/* Soft Cartoon Clouds */}
-        <div className="absolute top-12 left-8 w-24 h-8 bg-white/75 rounded-full blur-[1px] pointer-events-none" />
-        <div className="absolute top-16 left-20 w-16 h-8 bg-white/80 rounded-full pointer-events-none" />
-        <div className="absolute top-14 right-1/3 w-28 h-9 bg-white/70 rounded-full pointer-events-none" />
+        {/* Soft Winter Clouds */}
+        <div className="absolute top-12 left-8 w-24 h-8 bg-white/85 rounded-full blur-[1px] pointer-events-none" />
+        <div className="absolute top-16 left-20 w-16 h-8 bg-white/90 rounded-full pointer-events-none" />
+        <div className="absolute top-14 right-1/3 w-28 h-9 bg-white/80 rounded-full pointer-events-none" />
 
         {/* Decorative Confetti / Sparkle Shapes */}
-        <div className="absolute top-16 left-1/4 w-3 h-3 rounded-full bg-rose-400 border border-slate-800 rotate-12 pointer-events-none hidden sm:block" />
+        <div className="absolute top-16 left-1/4 w-3 h-3 rounded-full bg-red-500 border border-slate-800 rotate-12 pointer-events-none hidden sm:block" />
         <div className="absolute top-28 left-12 w-3.5 h-3.5 bg-amber-300 border border-slate-800 rotate-45 pointer-events-none hidden sm:block" />
-        <div className="absolute top-20 right-1/4 w-3 h-3 rounded-full bg-emerald-400 border border-slate-800 pointer-events-none hidden sm:block" />
+        <div className="absolute top-20 right-1/4 w-3 h-3 rounded-full bg-emerald-500 border border-slate-800 pointer-events-none hidden sm:block" />
 
-        {/* Bottom-Left Decorative Botanical & Tech Accent */}
+        {/* Bottom-Left Decorative Christmas Tree */}
         <div className="hidden lg:block absolute bottom-0 left-2 z-10 pointer-events-none">
-          <BotanicalGardenCornerSvg />
+          <ChristmasTreeCornerSvg />
         </div>
 
-        {/* Bottom-Right Decorative Botanical Accent */}
+        {/* Bottom-Right Decorative Christmas Tree */}
         <div className="hidden lg:block absolute bottom-0 right-2 z-10 pointer-events-none">
-          <BotanicalGardenCornerSvg flip />
+          <ChristmasTreeCornerSvg flip />
         </div>
 
         {/* Main Hero Content */}
@@ -798,15 +807,15 @@ export const GallerySection: React.FC = () => {
       )}
 
       {/* ========================================================= */}
-      {/* 2 & 3. GAMIFIED FILTER BAR + STARRY BLUE 3D PODIUM STAGE  */}
+      {/* 2 & 3. GAMIFIED FILTER BAR + CHRISTMAS 3D PODIUM STAGE    */}
       {/* ========================================================= */}
       <section
         ref={stageRef}
-        className="relative overflow-hidden rounded-3xl border-2 border-slate-800 bg-gradient-to-b from-blue-800 via-blue-600 to-sky-600 shadow-[0_6px_0_#1e293b] p-4 sm:p-7 space-y-6"
+        className="relative overflow-hidden rounded-3xl border-2 border-slate-800 bg-gradient-to-b from-emerald-900 via-emerald-800 to-red-900 shadow-[0_6px_0_#1e293b] p-4 sm:p-7 space-y-6"
       >
-        {/* Subtle Starry Pattern Overlay */}
+        {/* Subtle Starry & Snow Pattern Overlay */}
         <div
-          className="absolute inset-0 pointer-events-none opacity-25"
+          className="absolute inset-0 pointer-events-none opacity-30"
           style={{
             backgroundImage:
               'radial-gradient(circle at 12% 18%, #ffffff 2px, transparent 2.5px), radial-gradient(circle at 28% 72%, #fde047 2px, transparent 2.5px), radial-gradient(circle at 46% 24%, #ffffff 1.5px, transparent 2px), radial-gradient(circle at 68% 15%, #fde047 2.5px, transparent 3px), radial-gradient(circle at 82% 40%, #ffffff 2px, transparent 2.5px), radial-gradient(circle at 90% 78%, #fde047 2px, transparent 2.5px), radial-gradient(circle at 18% 48%, #ffffff 1.5px, transparent 2px)',
@@ -815,7 +824,7 @@ export const GallerySection: React.FC = () => {
         />
 
         {/* Gamified Filter Toolbar */}
-        <div className="relative z-10 bg-blue-950/35 backdrop-blur-sm border-2 border-white/20 rounded-2xl p-3.5 sm:p-4 space-y-3">
+        <div className="relative z-10 bg-slate-950/35 backdrop-blur-sm border-2 border-white/20 rounded-2xl p-3.5 sm:p-4 space-y-3">
           <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-3">
             {/* Room Selector Game Buttons */}
             <div className="flex items-center gap-2 overflow-x-auto pb-1.5 xl:pb-0 scrollbar-none">
@@ -1222,7 +1231,7 @@ export const GallerySection: React.FC = () => {
             {/* Bottom Stage Decoration & CTA */}
             <div className="relative z-10 pt-4 flex items-center justify-between">
               <div className="hidden sm:block pointer-events-none">
-                <BotanicalGardenCornerSvg />
+                <ChristmasTreeCornerSvg />
               </div>
               <div className="mx-auto">
                 <button
@@ -1230,11 +1239,11 @@ export const GallerySection: React.FC = () => {
                   onClick={handleOpenDriveCollection}
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-b from-amber-300 to-amber-400 hover:from-amber-200 hover:to-amber-400 text-slate-900 font-black text-xs sm:text-sm border-2 border-slate-900 shadow-[0_4px_0_#1e293b] active:translate-y-1 active:shadow-[0_1px_0_#1e293b] transition-all cursor-pointer"
                 >
-                  <span>ดูโฟลเดอร์ผลงานรวมทุกห้อง ({projectWorks.length} คน) ➔</span>
+                  <span>🎁 ดูโฟลเดอร์ผลงานรวมทุกห้อง ({projectWorks.length} คน) ➔</span>
                 </button>
               </div>
               <div className="hidden sm:block pointer-events-none">
-                <BotanicalGardenCornerSvg flip />
+                <ChristmasTreeCornerSvg flip />
               </div>
             </div>
           </div>
