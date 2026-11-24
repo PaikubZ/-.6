@@ -126,7 +126,7 @@ export const LESSONS: Lesson[] = [
       {
         prefix: 'Padlet รวม Prompt (',
         linkText: 'bit.ly/48RnAl6',
-        url: 'https://bit.ly/48RnAl6',
+        url: 'bit.ly/48RnAI6',
         suffix: ')'
       },
       {
