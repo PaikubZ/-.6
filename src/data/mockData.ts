@@ -37,7 +37,7 @@ export const LESSONS: Lesson[] = [
     difficulty: 'ปานกลาง',
     scoreWeight: 'เก็บคะแนนสะสม 5 คะแนน',
     homeworkDue: 'ส่งใบงานปฏิบัติในคาบเรียน',
-    downloadUrl: 'https://drive.google.com/file/d/1Yn33BZRXxXhmg-Be5W52TBNRxcKU6WhI/view?usp=sharing',
+    downloadUrl: 'https://canva.link/70kvuzh2bk9cx9x',
     pdfUrl: '/assets/aistudio/______________b9259520.pdf'
   },
   {
@@ -75,6 +75,68 @@ export const LESSONS: Lesson[] = [
     scoreWeight: 'เก็บคะแนนสะสม 8 คะแนน',
     homeworkDue: 'ส่งใบงานปฏิบัติในคาบเรียน',
     downloadUrl: 'https://canva.link/7ayd2of59o1i08y'
+  },
+  {
+    id: 'lesson-term2-3',
+    semester: 2,
+    termLabel: 'ภาคปลาย',
+    week: 3,
+    dateRange: '16 - 20 พ.ย. 69',
+    unitNumber: 2,
+    unitName: 'Flowchart & AI Music Generation',
+    title: 'การออกแบบ Flowchart และการประยุกต์ใช้ Gemini และ Suno AI สร้างสรรค์ผลงานดนตรีดิจิทัล',
+    subtitle: 'ทบทวนผังงานทั้ง 3 โครงสร้างบน app.diagrams.net พร้อมสวมบทบาทโปรดิวเซอร์แต่งเนื้อและสร้างเพลงด้วย AI อย่างมีจริยธรรม',
+    description:
+      'ทบทวนหลักการออกแบบอัลกอริทึมและวาดผังงาน (Flowchart) ครบทั้ง 3 โครงสร้างพื้นฐานผ่านเครื่องมือออนไลน์ app.diagrams.net พร้อมต่อยอดสู่การสร้างสรรค์ผลงานเพลงดิจิทัลด้วยปัญญาประดิษฐ์ (AI Music Generation) โดยบูรณาการการใช้ Gemini แต่งเนื้อเพลงภาษาไทยร่วมกับเว็บแอปสร้างศิลปิน AI และ Suno AI ภายใต้หลักจริยธรรมและเคารพลิขสิทธิ์',
+    tasks: [
+      'ทบทวนความรู้เดิมเรื่องสัญลักษณ์และโครงสร้างผังงาน (Flowchart) ทั้ง 3 รูปแบบ ผ่านเกม "Quiz Time!"',
+      'ฝึกออกแบบผังงานดิจิทัลด้วย app.diagrams.net และทำชิ้นงานปฏิบัติ "ขั้นตอนการซื้อเครื่องดื่มจากตู้กดอัตโนมัติ" เก็บคะแนนทักษะ 7 คะแนน',
+      'เรียนรู้องค์ประกอบดนตรี ท่อนเพลงมาตรฐาน ([Intro] - [Outro]) และใช้ Gemini แต่งเนื้อเพลงตามหลัก "คาถา 3 กล่องวิเศษ" และ 4 กฎเพลงไทย',
+      'วิเคราะห์แนวเพลงและจังหวะ (BPM) ผ่านเว็บแอป สร้างศิลปิน AI เพื่อสร้างคำสั่ง Styles และ My Taste สำหรับผลิตเพลงบน Suno AI เก็บคะแนนทักษะ 10 คะแนน'
+    ],
+    keyPoints: [
+      'การออกแบบผังงานดิจิทัล: เขียน Flowchart ครบทั้ง 3 โครงสร้าง (เรียงลำดับ ทางเลือก ทำซ้ำ) และส่งออกไฟล์ภาพ (JPEG) ผ่าน app.diagrams.net',
+      'การเขียน Prompt แต่งเนื้อเพลง: ใช้ Gemini แต่งเนื้อเพลงภาษาไทยตามกฎ 4 ข้อ (ภาษาพูด 6-10 พยางค์ งดตัวเลข/อักษรย่อ และใส่ป้ายกำกับ [ ])',
+      'การวิเคราะห์และสร้างสไตล์ดนตรี: ถอดองค์ประกอบเพลง (แนวเพลง จังหวะ BPM เครื่องดนตรี) ด้วยเว็บแอป Suno AI Prompt Generator',
+      'การสร้างเพลงด้วย AI อย่างมีจริยธรรม: ใช้งาน Suno AI โหมด Advanced โดยไม่ใส่ชื่อศิลปิน ชื่อวง หรือชื่อเพลงจริงที่มีลิขสิทธิ์ลงในคำสั่ง'
+    ],
+    pdfTitle: 'บทเรียนสัปดาห์ที่ 3: Flowchart & AI Music Generation (Gemini & Suno AI)',
+    pdfPages: 6,
+    pdfSize: '3.0 MB',
+    learningObjectives: [
+      'ออกแบบและส่งออกผังงาน Flowchart ทั้ง 3 โครงสร้างด้วย app.diagrams.net ได้อย่างถูกต้อง',
+      'ประยุกต์ใช้ Gemini แต่งเนื้อเพลงภาษาไทยตามโครงสร้างและกฎ 4 ข้อได้อย่างเหมาะสม',
+      'วิเคราะห์องค์ประกอบดนตรีและสร้างคำสั่ง Styles / My Taste บน Suno AI ได้อย่างมีจริยธรรมและเคารพลิขสิทธิ์'
+    ],
+    difficulty: 'ปานกลาง',
+    homeworkList: [
+      {
+        prefix: 'งานที่ 1 (7 คะแนน): ส่งไฟล์ภาพ Flowchart (.jpg) ตั้งชื่อ work-ชื่อ-ห้อง-เลขที่ ที่ ',
+        linkText: 'bit.ly/4Af0siu',
+        url: 'https://bit.ly/4Af0siu'
+      },
+      {
+        prefix: 'งานที่ 2 (10 คะแนน): แชร์ลิงก์เพลงจาก Suno AI ที่ ',
+        linkText: 'bit.ly/4eEoWcD',
+        url: 'https://bit.ly/4eEoWcD',
+        suffix: ' และบันทึกไฟล์ MP3 ลงโฟลเดอร์'
+      }
+    ],
+    studyTools: [
+      {
+        prefix: 'Padlet รวม Prompt (',
+        linkText: 'bit.ly/48RnAl6',
+        url: 'https://bit.ly/48RnAl6',
+        suffix: ')'
+      },
+      {
+        prefix: 'เว็บแอปสร้างศิลปิน AI (',
+        linkText: 'tech-p6-prompt.ai.studio',
+        url: 'https://tech-p6-prompt.ai.studio',
+        suffix: ')'
+      }
+    ],
+    downloadUrl: 'https://canva.link/xet409tkjubrmo5'
   },
 
   // ================= ภาคต้น (Semester 1) =================

@@ -97,7 +97,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                 กิจกรรมประจำสัปดาห์ ภาคปลาย
               </h1>
               <div className="inline-block mt-2 px-3.5 py-1 bg-amber-400 text-amber-950 font-bold rounded-xl text-sm sm:text-base shadow-sm">
-                ❄️ สัปดาห์ที่ 2 (9 - 13 พฤศจิกายน 2569)
+                ❄️ สัปดาห์ที่ 3 (16 - 20 พฤศจิกายน 2569)
               </div>
             </div>
 
@@ -108,7 +108,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   1
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  ทบทวนบทเรียนผ่านเกมออนไลน์ (Baamboozle) และแจ้งกำหนดการสอบ Bebras Thailand Challenge 2026
+                  ทบทวนโครงสร้างผังงาน (Flowchart) ทั้ง 3 รูปแบบ ผ่านเกมตอบคำถาม "Quiz Time!" จำนวน 5 ข้อ
                 </p>
               </div>
 
@@ -117,7 +117,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   2
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  ฝึกวิเคราะห์สถานการณ์และเชื่อมโยงบล็อกคำสั่ง Scratch สู่ผังงาน (Flowchart) ทั้ง 3 รูปแบบ (เรียงลำดับ, เงื่อนไข, ทำซ้ำ)
+                  ฝึกเขียนผังงานดิจิทัลบน app.diagrams.net และทำชิ้นงานปฏิบัติ "ตู้กดเครื่องดื่มอัตโนมัติ" (เก็บคะแนนทักษะ 7 คะแนน)
                 </p>
               </div>
 
@@ -126,7 +126,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   3
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  เรียนรู้การใช้งานเครื่องมือออนไลน์ app.diagrams.net สำหรับวาดสัญลักษณ์ เชื่อมเส้น และบันทึกไฟล์ภาพผังงาน
+                  เรียนรู้โครงสร้างท่อนเพลง ([Intro] - [Outro]) และใช้ Gemini แต่งเนื้อเพลงภาษาไทยตามหลัก "คาถา 3 กล่องวิเศษ" และกฎ 4 ข้อ
                 </p>
               </div>
 
@@ -135,7 +135,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   4
                 </span>
                 <p className="text-xs sm:text-sm text-white font-medium leading-relaxed">
-                  ปฏิบัติใบงานเขียนผังงาน Flowchart 2 โจทย์ (ซื้อตั๋วรถไฟฟ้า และ ตู้กดเครื่องดื่มอัตโนมัติ) เก็บคะแนนสะสม 8 คะแนน
+                  สร้างสไตล์เพลง (Styles) และรสนิยมเพลง (My Taste) ผ่านเว็บแอปสร้างศิลปิน AI เพื่อผลิตเพลงบน Suno AI (เก็บคะแนนทักษะ 10 คะแนน)
                 </p>
               </div>
             </div>
@@ -145,13 +145,13 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
               <button
                 onClick={() =>
                   onOpenLessonDetails
-                    ? onOpenLessonDetails('lesson-term2-2')
+                    ? onOpenLessonDetails('lesson-term2-3')
                     : onNavigate('lessons')
                 }
-                className="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 active:scale-95 text-amber-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2"
+                className="px-5 py-2.5 bg-amber-400 hover:bg-amber-300 active:scale-95 text-amber-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
               >
                 <BookOpen className="w-4 h-4" />
-                <span>ดูบทเรียนสัปดาห์ที่ 2</span>
+                <span>ดูบทเรียนสัปดาห์ที่ 3</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -170,13 +170,13 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
                   />
                 </div>
                 <div className="inline-block bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full mb-2 uppercase tracking-wider shadow-sm">
-                  🎅 สัปดาห์ที่ 2 ภาคปลาย
+                  🎅 สัปดาห์ที่ 3 ภาคปลาย
                 </div>
                 <h3 className="text-lg font-bold text-white mb-1">
-                  "ลุยออกแบบผังงานดิจิทัล!"
+                  "ออกแบบผังงาน &amp; ปั้นเพลงด้วย AI!"
                 </h3>
                 <p className="text-xs text-amber-100">
-                  ฝึกสร้าง Flowchart ด้วย Diagrams.net และเตรียมพร้อมสอบ Bebras 2026 🚀
+                  ฝึกวาด Flowchart บน Diagrams.net และสวมบทบาทโปรดิวเซอร์สร้างเพลงดิจิทัลด้วย Gemini และ Suno AI 🎵🚀
                 </p>
               </div>
             </div>
@@ -342,7 +342,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate, onOpenLess
               <button
                 onClick={() =>
                   onOpenLessonDetails
-                    ? onOpenLessonDetails('lesson-term2-2')
+                    ? onOpenLessonDetails('lesson-term2-3')
                     : onNavigate('lessons')
                 }
                 className="px-4 py-1.5 bg-red-600 hover:bg-red-700 active:scale-95 text-white text-xs font-bold rounded-full shadow-xs transition flex items-center gap-1.5 cursor-pointer"

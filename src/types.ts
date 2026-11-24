@@ -16,6 +16,13 @@ export interface Announcement {
   actionTab?: PageTab;
 }
 
+export interface LessonResourceLink {
+  prefix: string;
+  linkText: string;
+  url: string;
+  suffix?: string;
+}
+
 export interface Lesson {
   id: string;
   semester: 1 | 2; // 1 = ภาคต้น, 2 = ภาคปลาย
@@ -35,6 +42,8 @@ export interface Lesson {
   learningObjectives: string[];
   difficulty: 'ง่าย' | 'ปานกลาง' | 'ท้าทาย';
   homeworkDue?: string;
+  homeworkList?: LessonResourceLink[];
+  studyTools?: LessonResourceLink[];
   scoreWeight?: string;
   downloadUrl?: string;
   pdfUrl?: string;
