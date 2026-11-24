@@ -117,8 +117,8 @@ export const LESSONS: Lesson[] = [
       },
       {
         prefix: 'งานที่ 2 (10 คะแนน): แชร์ลิงก์เพลงจาก Suno AI ที่ ',
-        linkText: 'bit.ly/4eEoWcD',
-        url: 'https://bit.ly/4eEoWcD',
+        linkText: 'bit.ly/4eWmWN3',
+        url: 'https://bit.ly/4eWmWN3',
         suffix: ' และบันทึกไฟล์ MP3 ลงโฟลเดอร์'
       }
     ],
@@ -126,7 +126,7 @@ export const LESSONS: Lesson[] = [
       {
         prefix: 'Padlet รวม Prompt (',
         linkText: 'bit.ly/48RnAl6',
-        url: 'bit.ly/48RnAI6',
+        url: 'https://bit.ly/48RnAI6',
         suffix: ')'
       },
       {
